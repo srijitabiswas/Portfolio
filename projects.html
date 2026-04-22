@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Srijita UX</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+ 
+  <nav>
+    <div class="logo">Srijita UX</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+ 
+  <!-- HERO -->
+  <div class="projects-hero">
+    <h1>My Projects</h1>
+    <p>Here's a look at my recent design work and case studies</p>
+  </div>
+ 
+  <!-- FILTER TABS -->
+  <div class="filter-tabs">
+    <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+    <button class="filter-btn" onclick="filterProjects('uiux', this)">UI / UX</button>
+    <button class="filter-btn" onclick="filterProjects('web', this)">Web</button>
+  </div>
+ 
+  <!-- PROJECTS GRID -->
+  <div class="projects-grid">
+ 
+    <!-- 1: ZeroShield AI -->
+    <div class="project-card" data-category="web" style="background:#FFECEC;">
+      <div class="zeroshield.png" style="background:linear-gradient(135deg,#ffb3b3,#ff7a7a);">zeroshield.png</div>
+      <div class="project-card-body">
+        <h3>ZeroShield AI</h3>
+        <p>AI-powered cybersecurity dashboard for real-time threat detection and attack simulation in a SOC-style interface.</p>
+        <div class="tag-list">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Tailwind CSS</span>
+        </div>
+        <a href="case-zeroshield.html"><button class="btn btn-primary" style="width:100%;justify-content:center;">View Case Study</button></a>
+      </div>
+    </div>
+ 
+    <!-- 2: LuxeStay Villas -->
+    <div class="project-card" data-category="uiux" style="background:#EDE8FF;">
+      <div class="luxestay.png" style="background:linear-gradient(135deg,#c7bfff,#a89cff);">luxestay.png</div>
+      <div class="project-card-body">
+        <h3>LuxeStay Villas</h3>
+        <p>End-to-end UX case study for a dual-sided rental platform — from research and wireframes to high-fidelity Figma prototypes.</p>
+        <div class="tag-list">
+          <span class="tag">Figma</span>
+          <span class="tag">UX Research</span>
+        </div>
+        <a href="case-luxestay.html"><button class="btn btn-primary" style="width:100%;justify-content:center;">View Case Study</button></a>
+      </div>
+    </div>
+ 
+    <!-- 3: SplitX -->
+    <div class="project-card" data-category="web" style="background:#E5F9EF;">
+      <div class="splitx.png" style="background:linear-gradient(135deg,#a8f0c6,#6be0a0);">splitx.png</div>
+      <div class="project-card-body">
+        <h3>SplitX</h3>
+        <p>Smart group expense tracking app built in 36 hours at a hackathon, with RESTful APIs and MongoDB backend.</p>
+        <div class="tag-list">
+          <span class="tag">React Native</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">TypeScript</span>
+        </div>
+        <a href="case-splitx.html"><button class="btn btn-primary" style="width:100%;justify-content:center;">View Case Study</button></a>
+      </div>
+    </div>
+ 
+    <!-- 4: Wellness Personas -->
+    <div class="project-card" data-category="web" style="background:#FFF0E6;">
+      <div class="wellness.png" style="background:linear-gradient(135deg,#ffcba4,#ff9b5e);">wellness.png</div>
+      <div class="project-card-body">
+        <h3>Wellness Personas of SNU</h3>
+        <p>ML-powered lifestyle persona discovery app using KMeans clustering, with an interactive Streamlit interface.</p>
+        <div class="tag-list">
+          <span class="tag">Python</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">Streamlit</span>
+        </div>
+        <a href="case-wellness.html"><button class="btn btn-primary" style="width:100%;justify-content:center;">View Case Study</button></a>
+      </div>
+    </div>
+ 
+    <!-- 5: Fake News -->
+    <div class="project-card" data-category="web" style="background:#FFFBE0;">
+      <div class="fakenews.png" style="background:linear-gradient(135deg,#ffe88a,#ffd44a);">fakenews.png</div>
+      <div class="project-card-body">
+        <h3>Fake News Classification</h3>
+        <p>NLP-based machine learning system that classifies news articles as fake or real with 93.58% accuracy.</p>
+        <div class="tag-list">
+          <span class="tag">Python</span>
+          <span class="tag">TF-IDF</span>
+          <span class="tag">Scikit-learn</span>
+        </div>
+        <a href="case-fakenews.html"><button class="btn btn-primary" style="width:100%;justify-content:center;">View Case Study</button></a>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <!-- BACK HOME -->
+  <div class="back-home">
+    <a href="index.html"><button class="btn btn-secondary">← Back to Home</button></a>
+  </div>
+ 
+  <footer>
+    <div>srijitabiswas05@email.com</div>
+    <div class="footer-center">© 2025 Srijita. All rights reserved.</div>
+    <div>
+      <a href="https://www.linkedin.com/in/srijita-biswas-9690a3284" target="_blank">LinkedIn</a>
+      <a href="https://github.com/biswassrijita" target="_blank">GitHub</a>
+    </div>
+  </footer>
+ 
+</div>
+ 
+<script>
+  function filterProjects(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SplitX - Case Study</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <nav>
+    <div class="logo">Srijita UX</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+    </div>
+  </nav>
+ 
+  <div class="case-hero">
+    <h1>SplitX — Smart Group Expense Tracker</h1>
+    <p class="subtitle">Designed and developed during a 36-hour hackathon</p>
+    <p class="meta">Full-stack · React Native · Node.js · MongoDB</p>
+    <div class="case-links">
+      <a href="https://github.com/srijitabiswas/SplitX-" target="_blank" class="case-link">View Code</a>
+    </div>
+  </div>
+ 
+  <div class="case-sections">
+ 
+    <div class="case-card card-mint">
+      <h2>Overview</h2>
+      <p>SplitX is a group expense tracking application designed to simplify how shared expenses are recorded, split, and managed. It enables users to create groups, add members, and track shared financial activity through a structured backend system.</p>
+    </div>
+ 
+    <div class="case-card-grid">
+      <div class="case-card card-rose">
+        <h2>Problem</h2>
+        <p>In scenarios like trips, shared living, or events, expense tracking is often inefficient due to manual calculations, lack of visibility, and absence of a centralized system.</p>
+      </div>
+      <div class="case-card card-sky">
+        <h2>Solution</h2>
+        <p>Designed a system that centralizes expense tracking using structured data models and REST APIs, ensuring accuracy, scalability, and ease of use.</p>
+      </div>
+    </div>
+ 
+    <div class="case-card card-lemon">
+      <h2>Tech Stack</h2>
+      <p><strong>Frontend:</strong> React Native &nbsp;·&nbsp; <strong>Backend:</strong> Node.js, Express.js &nbsp;·&nbsp; <strong>Database:</strong> MongoDB (Mongoose)</p>
+    </div>
+ 
+    <div class="case-card card-lavender">
+      <h2>System Design</h2>
+      <p>The system follows a RESTful architecture with clear separation between API layer, business logic, and data layer.</p>
+      <ul>
+        <li>Node.js + Express handles API routing</li>
+        <li>MongoDB manages data using schema-based modeling</li>
+        <li>Mongoose enables structured relationships</li>
+        <li>Endpoints ensure modular and scalable design</li>
+      </ul>
+    </div>
+ 
+    <div class="case-card-grid">
+      <div class="case-card card-peach">
+        <h2>API Design</h2>
+        <ul>
+          <li><strong>POST /users</strong> → Create user</li>
+          <li><strong>POST /groups</strong> → Create group</li>
+          <li><strong>GET /groups</strong> → Fetch all groups</li>
+          <li><strong>POST /expenses</strong> → Add expense</li>
+          <li><strong>GET /groups/:id/expenses</strong> → Get group expenses</li>
+        </ul>
+      </div>
+      <div class="case-card card-white">
+        <h2>Database Design</h2>
+        <ul>
+          <li><strong>User:</strong> name, email</li>
+          <li><strong>Group:</strong> name, members (User IDs)</li>
+          <li><strong>Expense:</strong> groupId, amount, paidBy, splitBetween</li>
+        </ul>
+        <p style="margin-top:16px;">Uses ObjectId references to maintain relationships and ensure scalability.</p>
+      </div>
+    </div>
+ 
+    <div class="case-card-grid">
+      <div class="case-card card-sky">
+        <h2>Key Features</h2>
+        <ul>
+          <li>Group creation and management</li>
+          <li>Expense tracking and splitting</li>
+          <li>RESTful API structure</li>
+          <li>Centralized error handling</li>
+          <li>Data validation and constraints</li>
+        </ul>
+      </div>
+      <div class="case-card card-mint">
+        <h2>Highlight: Cascade Deletion</h2>
+        <p>Implemented cascade deletion to automatically remove all related expenses when a group is deleted, ensuring database consistency and preventing orphan data.</p>
+      </div>
+    </div>
+ 
+    <div class="case-card card-pink">
+      <h2>My Role</h2>
+      <ul>
+        <li>Designed user flow and product structure</li>
+        <li>Developed backend APIs using Node.js and Express</li>
+        <li>Designed database schema and relationships</li>
+      </ul>
+    </div>
+ 
+    <div class="case-card-grid">
+      <div class="case-card card-rose">
+        <h2>Challenges</h2>
+        <ul>
+          <li>Designing scalable schema under time constraints</li>
+          <li>Ensuring stable API behavior</li>
+          <li>Balancing speed and correctness during hackathon</li>
+        </ul>
+      </div>
+      <div class="case-card card-lemon">
+        <h2>Future Improvements</h2>
+        <ul>
+          <li>Balance calculation (who owes whom)</li>
+          <li>JWT Authentication</li>
+          <li>Payment integration (UPI)</li>
+          <li>Notifications and reminders</li>
+        </ul>
+      </div>
+    </div>
+ 
+    <div class="case-card card-lavender">
+      <h2>Outcome</h2>
+      <p>Built a functional backend system with structured APIs and scalable database design, demonstrating strong understanding of backend architecture and system design principles.</p>
+    </div>
+ 
+    <div class="case-card card-white">
+      <h2>Key Learnings</h2>
+      <ul>
+        <li>Schema design directly impacts scalability</li>
+        <li>Backend structure is critical in early-stage products</li>
+        <li>Error handling is essential for production systems</li>
+      </ul>
+    </div>
+ 
+  </div>
+ 
+  <footer>
+    <div>srijitabiswas05@email.com</div>
+    <div class="footer-center">© 2025 Srijita. All rights reserved.</div>
+    <div>
+      <a href="https://www.linkedin.com/in/srijita-biswas-9690a3284" target="_blank">LinkedIn</a>
+      <a href="https://github.com/biswassrijita" target="_blank">GitHub</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
+ 
