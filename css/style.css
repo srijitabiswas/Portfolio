@@ -148,7 +148,7 @@ nav {
 .hero-image-wrap { flex-shrink: 0; }
 .hero-image-wrap img {
   width: 600px;
-  height: 700px;
+  height: 600px;
   object-fit: cover;
   border-radius: 24px;
   border: 2px solid var(--border);
