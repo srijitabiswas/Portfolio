@@ -122,8 +122,13 @@ nav {
   justify-content: space-between;
   align-items: center;
   gap: 80px;
-  padding: 96px 0 88px;
+
+  /* UPDATED STYLING */
+  padding: 80px 40px;
+  background: linear-gradient(135deg, #eef7ff 0%, #e0f2ff 100%);
+  border-radius: 24px;
 }
+
 .hero-left { flex: 1; max-width: 560px; }
 .hero h1 {
   font-size: clamp(42px, 5.5vw, 68px);
@@ -614,6 +619,19 @@ footer a:hover { color: var(--accent); }
 .card-lemon    { background: #FFFBE0; }
 .card-rose     { background: #FFECEC; }
  
+.social-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.social-link:hover {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .projects-grid { grid-template-columns: 1fr; }
