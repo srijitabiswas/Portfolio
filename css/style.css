@@ -266,18 +266,29 @@ footer a:hover { color: var(--accent); }
  
 /* PAGE HEADING */
 .page-heading {
-  padding: 64px 0 52px;
+  padding: 64px 0 60px;
   border-bottom: 1.5px solid var(--border);
-  margin-bottom: 64px;
+  margin-bottom: 72px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
+
 .page-heading h1 {
   font-size: clamp(38px, 5vw, 60px);
   font-weight: 800;
   letter-spacing: -2px;
-  margin-bottom: 12px;
 }
-.page-heading p { font-size: 16px; color: var(--text-muted); line-height: 1.7; }
- 
+
+ .about-tagline {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+
 /* ABOUT PAGE */
 .about-grid {
   display: grid;
@@ -295,8 +306,10 @@ footer a:hover { color: var(--accent); }
   margin-bottom: 40px;
 }
 
+/* SOCIAL LINKS (FIXED POSITIONING) */
 .about-social {
-  margin-top: 16px;
+  margin-top: 8px;
+  margin-bottom: 10px;
   display: flex;
   gap: 20px;
   align-items: center;
