@@ -286,6 +286,7 @@ footer a:hover { color: var(--accent); }
   color: var(--text-muted);
   line-height: 1.7;
   max-width: 520px;
+  margin-bottom: 14px;
 }
 
 
@@ -308,7 +309,9 @@ footer a:hover { color: var(--accent); }
 
 /* SOCIAL LINKS (FIXED POSITIONING) */
 .about-social {
-  margin-top: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
   margin-bottom: 10px;
   display: flex;
   gap: 20px;
@@ -319,6 +322,7 @@ footer a:hover { color: var(--accent); }
   content: "Find me on:";
   font-size: 13px;
   color: var(--text-muted);
+  margin-right: 6px;
 }
 
 .about-social a {
