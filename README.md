@@ -6,8 +6,6 @@ This portfolio is designed to reflect not just my projects, but my **design thin
 
 ---
 
-[Portfolio Preview](Images/portfolio_preview.png)
-
 ## ✨ Live Preview
 
 🔗 [View Portfolio](https://srijitabiswas.github.io/Portfolio/index.html)  
