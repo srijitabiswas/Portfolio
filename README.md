@@ -6,7 +6,7 @@ This portfolio is designed to reflect not just my projects, but my **design thin
 
 ---
 
-![Portfolio Preview](Images/portfolio_preview.png)
+[Portfolio Preview](Images/portfolio_preview.png)
 
 ## ✨ Live Preview
 
@@ -122,9 +122,3 @@ This portfolio follows a **minimal + structured design philosophy**:
 ---
 
 ## ⭐ If you like this project
-
-Give it a ⭐ on GitHub — it helps and motivates me to build more!
-
----
-
-## 📁 Folder Structure
