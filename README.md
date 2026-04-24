@@ -120,3 +120,5 @@ This portfolio follows a **minimal + structured design philosophy**:
 ---
 
 ## ⭐ If you like this project
+
+Give it a ⭐ on GitHub — it helps and motivates me to build more!
