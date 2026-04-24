@@ -632,6 +632,85 @@ footer a:hover { color: var(--accent); }
   border-bottom: 1px solid var(--accent);
 }
 
+/* ===========================
+   ADVANCED HERO (NEW)
+=========================== */
+
+.hero-advanced {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* BIG BACKGROUND TEXT */
+.hero-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 140px;
+  font-weight: 800;
+  color: rgba(0,0,0,0.04);
+  letter-spacing: -4px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* MAIN CONTENT */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+/* SMALL INTRO */
+.hero-intro {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+/* MAIN HEADING */
+.hero-content h1 {
+  font-size: clamp(48px, 6vw, 90px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+/* SUBTEXT */
+.hero-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* SOCIAL LINKS */
+.hero-social {
+  margin-top: 28px;
+  display: flex;
+  gap: 20px;
+}
+
+.hero-social a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.hero-social a:hover {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+
+
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .projects-grid { grid-template-columns: 1fr; }
