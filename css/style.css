@@ -294,11 +294,6 @@ footer a:hover { color: var(--accent); }
   color: var(--text-muted);
   margin-bottom: 40px;
 }
-.story-block {
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1.5px solid var(--border);
-}
 
 .about-social {
   margin-top: 24px;
@@ -324,6 +319,12 @@ footer a:hover { color: var(--accent); }
 .about-social a:hover {
   color: var(--accent);
   border-bottom: 1px solid var(--accent);
+}
+
+.story-block {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1.5px solid var(--border);
 }
 
 .story-block:last-child { border-bottom: none; }
