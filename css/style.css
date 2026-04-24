@@ -783,3 +783,31 @@ footer a:hover { color: var(--accent); }
   footer a { margin-left: 10px; }
   .case-card { padding: 28px 24px; }
 }
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PARALLAX OPTIMIZATION */
+.parallax img {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* MAGNETIC BUTTON SMOOTHING */
+.btn {
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* EMAIL CLICK */
+#email {
+  cursor: pointer;
+}
