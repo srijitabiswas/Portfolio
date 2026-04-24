@@ -299,6 +299,33 @@ footer a:hover { color: var(--accent); }
   padding-bottom: 40px;
   border-bottom: 1.5px solid var(--border);
 }
+
+.about-social {
+  margin-top: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.about-social::before {
+  content: "Find me on:";
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.about-social a {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.about-social a:hover {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+
 .story-block:last-child { border-bottom: none; }
 .story-block h3 { font-size: 19px; font-weight: 700; margin-bottom: 12px; }
 .story-block p { font-size: 15px; color: var(--text-sec); line-height: 1.85; }
