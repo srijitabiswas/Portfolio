@@ -636,75 +636,88 @@ footer a:hover { color: var(--accent); }
    ADVANCED HERO (NEW)
 =========================== */
 
-.hero-advanced {
-  position: relative;
-  padding: 120px 0;
-  overflow: hidden;
+/* ===========================
+   CLEAN HERO (FINAL)
+=========================== */
+
+.hero-new {
+  text-align: center;
+  padding: 60px 0 40px;
+  background: linear-gradient(to bottom, #eef7ff, #ffffff);
+  border-radius: 24px;
 }
 
-/* BIG BACKGROUND TEXT */
-.hero-bg-text {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  font-size: 140px;
+/* INTRO */
+.hero-new .hero-intro {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* TOP TITLE */
+.hero-new .hero-title-top {
+  font-size: clamp(42px, 6vw, 72px);
   font-weight: 800;
-  color: rgba(0,0,0,0.04);
-  letter-spacing: -4px;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* MAIN CONTENT */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-}
-
-/* SMALL INTRO */
-.hero-intro {
-  font-size: 14px;
-  letter-spacing: 2px;
-  color: var(--accent);
-  margin-bottom: 16px;
-  font-weight: 600;
-}
-
-/* MAIN HEADING */
-.hero-content h1 {
-  font-size: clamp(48px, 6vw, 90px);
-  font-weight: 800;
-  line-height: 1.05;
   letter-spacing: -2px;
-  margin-bottom: 24px;
+}
+
+/* IMAGE */
+.hero-center {
+  margin: 40px 0;
+}
+
+.hero-center img {
+  width: 320px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+}
+
+.hero-center img:hover {
+  transform: scale(1.03);
+}
+
+/* BOTTOM TITLE */
+.hero-new .hero-title-bottom {
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 800;
+  margin-bottom: 10px;
 }
 
 /* SUBTEXT */
-.hero-sub {
-  font-size: 16px;
+.hero-new .hero-sub {
+  font-size: 18px;
   color: var(--text-muted);
-  line-height: 1.8;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
 
-/* SOCIAL LINKS */
-.hero-social {
-  margin-top: 28px;
+/* BUTTONS */
+.hero-new .hero-buttons {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.hero-social a {
+/* SOCIAL */
+.hero-new .hero-social {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.hero-new .hero-social a {
   font-size: 14px;
   font-weight: 600;
   color: var(--text-muted);
   border-bottom: 1px solid transparent;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
-.hero-social a:hover {
+.hero-new .hero-social a:hover {
   color: var(--accent);
   border-bottom: 1px solid var(--accent);
 }
