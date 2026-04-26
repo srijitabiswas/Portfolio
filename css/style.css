@@ -785,13 +785,20 @@ footer a:hover { color: var(--accent); }
 }
 
 /* SCROLL REVEAL */
+/* SCROLL REVEAL — SAFE VERSION */
 .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Only apply animation if JS is enabled */
+.js-enabled .reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
 }
 
-.reveal.active {
+.js-enabled .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
