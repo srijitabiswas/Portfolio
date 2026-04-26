@@ -154,13 +154,18 @@
 </div>
  
 <script>
-  function filterProjects(category, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
-    });
-  }
+function filterProjects(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.style.display =
+      (category === 'all' || card.dataset.category === category)
+        ? 'block'
+        : 'none';
+  });
+}
 </script>
+
 </body>
 </html>
