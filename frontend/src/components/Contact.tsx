@@ -115,8 +115,7 @@ export default function Contact() {
             <div className="ct-links">
               {socialOnly.map((l) => (
                 <a key={l.platform} href={l.url} target="_blank" rel="noreferrer" className="ct-link">
-                  {l.platform === "Custom" ? l.label : l.platform} <span className="ct-arr">↗</span>
-                </a>
+{l.platform} <span className="ct-arr">↗</span>                </a>
               ))}
             </div>
           </div>
