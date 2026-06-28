@@ -157,6 +157,7 @@ export default function Projects() {
   const [active, setActive] = useState<Filter>("All");
   const [showAll, setShowAll] = useState(false);
   const [projects, setProjects] = useState<ProjectT[]>(FALLBACK_PROJECTS);
+  console.log(projects.length);
   const navigate = useNavigate();
 
   /* Pull live, admin-managed project data — numbers, dates, content,
@@ -211,7 +212,7 @@ export default function Projects() {
     cardTriggerRef.current = tween.scrollTrigger ?? null;
   }, [active, projects, showAll]);
 
-  const filtered = active === "All" ? projects : projects.filter(p => p.filter === active);
+ const filtered = projects.filter(FILTER_MATCHERS[active]);
   const VISIBLE_COUNT = 3;
   const visible = showAll ? filtered : filtered.slice(0, VISIBLE_COUNT);
 
