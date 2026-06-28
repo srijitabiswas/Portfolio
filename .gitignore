@@ -1,0 +1,5 @@
+.vercel
+frontend/dist
+frontend/node_modules
+backend/node_modules
+backend/.env

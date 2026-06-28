@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+/* ─── DESIGN TOKENS ───────────────────────────── */
+:root {
+  --bg:        #EEF7FF;
+  --ink:       #050505;
+  --ink-50:    rgba(5,5,5,0.5);
+  --ink-15:    rgba(5,5,5,0.08);
+  --accent:    #2E5FE8;
+  --accent-2:  #1a3fa8;
+  --white:     #ffffff;
+  --border:    rgba(5,5,5,0.12);
+  --radius:    16px;
+  --font:      'Inter', sans-serif;
+
+  /* spacing / sizing */
+  --nav-h:     72px;
+  --cw:        min(92%, 1280px);
+}
+
+/* ─── RESET ───────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: var(--font); cursor: none; }
+
+/* ─── UTILITY ──────────────────────────────────── */
+.reveal-line { overflow: hidden; }
+
+/* ─── SCROLLBAR ────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; }
