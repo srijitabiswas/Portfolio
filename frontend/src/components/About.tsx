@@ -120,7 +120,7 @@ const About = () => {
       </div>
 
       <style>{`
-        .ab { background: #050505; color: #fff; padding: clamp(80px,10vw,130px) clamp(20px,5vw,64px) clamp(60px,8vw,100px); }
+        .ab { background: var(--bg); color: var(--text); padding: clamp(80px,10vw,130px) clamp(20px,5vw,64px) clamp(60px,8vw,100px); }
 
         .ab-top {
           max-width: 1280px; margin: 0 auto;
@@ -137,7 +137,7 @@ const About = () => {
           margin-bottom: 26px;
         }
         .ab-h1-white {
-          color: #fff;
+          color: var(--text);
           text-shadow: 1.5px 0 rgba(110,231,255,0.5), -1.5px 0 rgba(244,114,182,0.4);
         }
         .ab-h1-violet {
@@ -148,7 +148,7 @@ const About = () => {
         .ab-bio {
           font-size: clamp(14px,1.3vw,16px);
           line-height: 1.8;
-          color: rgba(255,255,255,0.55);
+          color: rgba(var(--text-rgb),0.55);
           max-width: 560px;
           font-weight: 300;
           margin-bottom: 16px;
@@ -157,7 +157,7 @@ const About = () => {
         .ab-quote {
           font-size: 14px;
           font-style: italic;
-          color: rgba(255,255,255,0.38);
+          color: rgba(var(--text-rgb),0.38);
           margin: 14px 0 30px;
         }
 
@@ -172,14 +172,14 @@ const About = () => {
           font-size: clamp(26px,3vw,34px);
           font-weight: 800;
           letter-spacing: -0.02em;
-          color: #fff;
+          color: var(--text);
         }
         .ab-stat span {
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.4);
+          color: rgba(var(--text-rgb),0.4);
         }
 
         .ab-cta {
@@ -203,7 +203,7 @@ const About = () => {
           object-fit: cover;
           object-position: top;
           border-radius: 20px;
-          border: 1px solid rgba(255,255,255,0.1);
+          border: 1px solid rgba(var(--text-rgb),0.1);
           box-shadow: 0 30px 70px rgba(139,92,246,0.18);
           display: block;
         }
@@ -242,14 +242,14 @@ const About = () => {
           font-size: clamp(32px,4.5vw,54px);
           font-weight: 900;
           letter-spacing: -0.03em;
-          color: #fff;
+          color: var(--text);
           text-shadow: 1.5px 0 rgba(110,231,255,0.4), -1.5px 0 rgba(244,114,182,0.3);
           margin-bottom: 32px;
         }
         .ab-exp-list { display: flex; flex-direction: column; gap: 16px; }
         .ab-exp-card {
-          background: #0d0d12;
-          border: 1px solid rgba(255,255,255,0.08);
+          background: var(--bg-elevated);
+          border: 1px solid rgba(var(--text-rgb),0.08);
           border-radius: 16px;
           padding: 26px 30px;
           transition: border-color 0.25s ease, transform 0.25s ease;
@@ -266,9 +266,9 @@ const About = () => {
           margin-bottom: 14px;
           flex-wrap: wrap;
         }
-        .ab-exp-role { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .ab-exp-role { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
         .ab-exp-company { font-size: 13px; font-weight: 600; color: #8b5cf6; }
-        .ab-exp-date { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 500; white-space: nowrap; }
+        .ab-exp-date { font-size: 12px; color: rgba(var(--text-rgb),0.4); font-weight: 500; white-space: nowrap; }
         .ab-exp-points {
           list-style: none;
           display: flex;
@@ -278,7 +278,7 @@ const About = () => {
         .ab-exp-points li {
           font-size: 13.5px;
           line-height: 1.7;
-          color: rgba(255,255,255,0.5);
+          color: rgba(var(--text-rgb),0.5);
           font-weight: 300;
           padding-left: 18px;
           position: relative;

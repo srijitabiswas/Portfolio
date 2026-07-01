@@ -32,7 +32,7 @@ const Preloader = ({ done }: Props) => {
         .preloader {
           position: fixed;
           inset: 0;
-          background: var(--ink);
+          background: #05050a;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -51,12 +51,12 @@ const Preloader = ({ done }: Props) => {
           font-weight: 900;
           letter-spacing: -0.04em;
           line-height: 1;
-          color: var(--white);
+          color: #ffffff;
           margin-bottom: 28px;
           overflow: hidden;
         }
         .preloader__s {
-          color: var(--accent);
+          color: #ffffff;
           display: inline-block;
           animation: preloaderS 0.6s cubic-bezier(.16,1,.3,1) 0.1s both;
         }

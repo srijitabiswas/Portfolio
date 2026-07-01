@@ -26,7 +26,7 @@ export default function AdminLayout() {
   return (
     <div className="adm-shell">
       <aside className="adm-sidebar">
-        <div className="adm-logo">Srijita<span>.</span>admin</div>
+        <div className="adm-logo">Personal<span> </span>Dashboard</div>
 
         <a href="/" target="_blank" rel="noreferrer" className="adm-view-site">
           View Live Portfolio ↗

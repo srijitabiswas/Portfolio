@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/+$/, "");
 
 export default function Landing() {
   const sec = useRef<HTMLElement>(null);
@@ -232,7 +232,7 @@ export default function Landing() {
       </div>
 
       <style>{`
-        .ln { background:#000; color:#fff; }
+        .ln { background: var(--bg); color: var(--text); }
 
         /* ══════════════ HERO — redesigned ══════════════ */
         .ln-hero {
@@ -243,7 +243,7 @@ export default function Landing() {
           justify-content: center;
           overflow: hidden;
           padding: calc(var(--nav-h) + 20px) 24px 40px;
-          background: #000;
+          background: var(--bg);
         }
 
         /* Background portrait — atmospheric texture */
@@ -268,7 +268,7 @@ export default function Landing() {
         .ln-portrait-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 22%, transparent 70%, rgba(0,0,0,0.85) 100%);
+          background: linear-gradient(to bottom, rgba(var(--bg-rgb),0.55) 0%, transparent 22%, transparent 70%, rgba(var(--bg-rgb),0.85) 100%);
         }
 
         .ln-hero-content {
@@ -289,7 +289,7 @@ export default function Landing() {
         .ln-intro-line {
           font-size: clamp(16px, 1.8vw, 26px);
           font-weight: 400;
-          color: #fff;
+          color: var(--text);
           margin: 0 0 18px;
         }
         .ln-intro-accent { color: #8b5cf6; font-weight: 700; }
@@ -305,7 +305,7 @@ export default function Landing() {
           margin: 0 0 30px;
         }
         .ln-heading-white {
-          color: #fff;
+          color: var(--text);
           text-shadow: 0 0 50px rgba(139,92,246,0.22);
         }
         .ln-heading-grad {
@@ -322,7 +322,7 @@ export default function Landing() {
           font-weight: 500;
           font-size: clamp(14px, 1.5vw, 20px);
           line-height: 1.6;
-          color: rgba(255,255,255,0.55);
+          color: rgba(var(--text-rgb),0.55);
           margin: 0 0 26px;
         }
 
@@ -332,7 +332,7 @@ export default function Landing() {
           margin: 0 0 40px;
           font-size: clamp(13.5px, 1.05vw, 16px);
           line-height: 1.85;
-          color: #B3B3B3;
+          color: rgba(var(--text-rgb),0.7);
           font-weight: 300;
         }
 
@@ -347,21 +347,21 @@ export default function Landing() {
         }
         .ln-btn-fill { background:#8b5cf6; color:#fff; box-shadow:0 6px 28px rgba(139,92,246,.4); }
         .ln-btn-fill:hover { box-shadow:0 10px 34px rgba(139,92,246,.55); }
-        .ln-btn-out  { background:rgba(255,255,255,.04); color:#fff; border:1.5px solid rgba(255,255,255,.3); }
-        .ln-btn-out:hover { background:rgba(255,255,255,.1); }
+        .ln-btn-out  { background:rgba(var(--text-rgb),.04); color:var(--text); border:1.5px solid rgba(var(--text-rgb),.3); }
+        .ln-btn-out:hover { background:rgba(var(--text-rgb),.1); }
 
         /* ── Social links — low opacity until hover ── */
         .ln-socials { display:flex; align-items:center; gap:10px; opacity:0.55; transition:opacity .3s; }
         .ln-socials:hover { opacity:1; }
-        .ln-socials span { color:rgba(255,255,255,.25); }
-        .ln-social { font-size:13px; font-weight:600; color:rgba(255,255,255,.7); transition:color .2s; text-decoration:none; }
+        .ln-socials span { color:rgba(var(--text-rgb),.25); }
+        .ln-social { font-size:13px; font-weight:600; color:rgba(var(--text-rgb),.7); transition:color .2s; text-decoration:none; }
         .ln-social:hover { color:#8b5cf6; }
 
         /* ══════════════ WHAT I DO (unchanged) ══════════════ */
         .ln-what {
-          background: #000;
+          background: var(--bg);
           padding: clamp(30px,5vw,50px) clamp(20px,5vw,60px) 80px;
-          border-top: 1px solid rgba(255,255,255,.06);
+          border-top: 1px solid rgba(var(--text-rgb),.06);
           opacity: 1;
         }
         .ln-what-inner {
@@ -372,7 +372,7 @@ export default function Landing() {
         .ln-what-heading { display:flex; align-items:center; }
         .ln-what-title {
           font-size: clamp(42px,6vw,80px);
-          font-weight: 900; letter-spacing:-.04em; line-height:.92; color:#fff; margin:0;
+          font-weight: 900; letter-spacing:-.04em; line-height:.92; color:var(--text); margin:0;
         }
         .ln-wid-cards { display:flex; flex-direction:column; gap:20px; }
         .ln-wid-card {
@@ -390,7 +390,7 @@ export default function Landing() {
         }
         .ln-wid-icon  { font-size:28px; flex-shrink:0; margin-top:2px; }
         .ln-wid-title { font-size:16px; font-weight:800; margin-bottom:7px; letter-spacing:.01em; }
-        .ln-wid-text  { font-size:14px; line-height:1.72; color:rgba(255,255,255,.44); font-weight:300; }
+        .ln-wid-text  { font-size:14px; line-height:1.72; color:rgba(var(--text-rgb),.44); font-weight:300; }
 
         /* ══════════════ RESPONSIVE ══════════════ */
         @media(max-width:900px) {

@@ -71,7 +71,7 @@ function mapApiProject(p: any): ProjectT {
   };
 }
 
-type Filter = "All" | "UX" | "Dev" | "ML" | "Hackathon" | "Academic" | "Personal";
+type Filter = "All" | "UX" | "Dev" | "ML" | "Hackathon" | "Academic" | "Personal" | "Work" ;
  
 /* Each filter button defines its own match rule — UX/Dev/ML check the
    project's `filter` field, while Hackathon/Academic/Personal check its
@@ -85,8 +85,9 @@ const FILTER_MATCHERS: Record<Filter, (p: ProjectT) => boolean> = {
   Hackathon: (p) => p.type === "Hackathon",
   Academic:  (p) => p.type === "Academic",
   Personal:  (p) => p.type === "Personal Project",
+  Work:      (p) => p.type === "Work",
 };
-const FILTERS: Filter[] = ["All", "UX", "Dev", "ML", "Hackathon", "Academic", "Personal"];
+const FILTERS: Filter[] = ["All", "Hackathon", "Academic", "Personal", "Work"];
 
 
 /* ── Single project card with 3D mouse-tilt + glare ── */
@@ -250,29 +251,29 @@ export default function Projects() {
       </div>
 
       <style>{`
-        .pj { padding:clamp(80px,10vw,130px) clamp(20px,5vw,60px); background:#050505; }
+        .pj { padding:clamp(80px,10vw,130px) clamp(20px,5vw,60px); background:var(--bg); }
         .pj-inner { max-width: 1280px; margin: 0 auto; }
 
         .pj-head { margin-bottom:56px; text-align:center; }
         .pj-eye {
           font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
-          color:rgba(255,255,255,0.35); margin-bottom:24px;
+          color:rgba(var(--text-rgb),0.35); margin-bottom:24px;
           display:flex; align-items:center; justify-content:center; gap:16px;
         }
-        .pj-eye::before, .pj-eye::after { content:''; height:1px; width:80px; background:rgba(255,255,255,0.15); }
+        .pj-eye::before, .pj-eye::after { content:''; height:1px; width:80px; background:rgba(var(--text-rgb),0.15); }
         .pj-h2   {
           font-size:clamp(24px,3.4vw,40px); font-weight:900; letter-spacing:-.03em; line-height:1.1;
-          margin-bottom:24px; color:#fff; text-align:left;
+          margin-bottom:24px; color:var(--text); text-align:left;
         }
         .pj-h2 em { color:#8b5cf6; font-style:normal; }
 
         .pj-filters { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-start; }
         .pj-filter {
           padding:9px 22px; border-radius:99px; font-size:13px; font-weight:600; letter-spacing:.03em;
-          border:1.5px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.55); background:transparent;
+          border:1.5px solid rgba(var(--text-rgb),0.15); color:rgba(var(--text-rgb),0.55); background:transparent;
           transition:all .2s; cursor:pointer;
         }
-        .pj-filter:hover { border-color:#8b5cf6; color:#fff; }
+        .pj-filter:hover { border-color:#8b5cf6; color:var(--text); }
         .pj-filter-on { background:#8b5cf6; border-color:#8b5cf6; color:#fff; }
 
         .pj-view-all-btn {
@@ -284,7 +285,7 @@ export default function Projects() {
   font-size: 13.5px;
   font-weight: 700;
   letter-spacing: .02em;
-  color: rgba(255,255,255,.55);
+  color: rgba(var(--text-rgb),.55);
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -304,10 +305,10 @@ export default function Projects() {
 
         .pj-card {
           position: relative;
-          background:#151515;
+          background:var(--bg-elevated);
           border-radius:18px;
           overflow:hidden;
-          border:1px solid rgba(255,255,255,0.12);
+          border:1px solid rgba(var(--text-rgb),0.12);
           cursor: pointer;
           transform-style: preserve-3d;
           transform:
@@ -343,7 +344,7 @@ export default function Projects() {
           height:150px;
           overflow:hidden;
           position:relative;
-          background:#111;
+          background:var(--bg-elevated);
         }
         .pj-card-img img {
           width:100%; height:100%; object-fit:cover; object-position:top; display:block;
@@ -371,16 +372,16 @@ export default function Projects() {
         .pj-card-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
         .pj-card-cat  { font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color: var(--pa, #8b5cf6); }
         .pj-arr {
-          width:28px; height:28px; border-radius:50%; border:1.5px solid var(--pa, rgba(255,255,255,0.2));
-          display:flex; align-items:center; justify-content:center; font-size:11px; color:#fff; flex-shrink:0;
+          width:28px; height:28px; border-radius:50%; border:1.5px solid var(--pa, rgba(var(--text-rgb),0.2));
+          display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--text); flex-shrink:0;
           transition:all .2s; background:none; cursor:pointer;
         }
         .pj-arr:hover { background:var(--pa, #8b5cf6); border-color:var(--pa, #8b5cf6); }
-        .pj-card-title { font-size:16px; font-weight:800; letter-spacing:-.01em; color:#fff; margin-bottom:10px; }
+        .pj-card-title { font-size:16px; font-weight:800; letter-spacing:-.01em; color:var(--text); margin-bottom:10px; }
         .pj-card-desc {
           font-size:12.5px;
           line-height:1.7;
-          color:rgba(255,255,255,0.65);
+          color:rgba(var(--text-rgb),0.65);
           margin-bottom:18px;
           font-weight:400;
           display: -webkit-box;
@@ -394,9 +395,9 @@ export default function Projects() {
           border-radius:99px;
           font-size:10px;
           font-weight:600;
-          background:rgba(255,255,255,0.07);
-          border:1px solid rgba(255,255,255,0.14);
-          color:#ffffff;
+          background:rgba(var(--text-rgb),0.07);
+          border:1px solid rgba(var(--text-rgb),0.14);
+          color:var(--text);
         }
 
         @media(max-width:1100px) {

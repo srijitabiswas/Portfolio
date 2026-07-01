@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../ThemeContext";
 
 const links = [
   { label: "About",    href: "#about"    },
@@ -13,6 +14,17 @@ const Navbar = () => {
   const navRef = useRef<HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, resolvedTheme, setTheme } = useTheme();
+
+  const cycleTheme = () => {
+    // system → light → dark → system …
+    if (theme === "system") setTheme("light");
+    else if (theme === "light") setTheme("dark");
+    else setTheme("system");
+  };
+
+  const themeIcon = theme === "system" ? "💻" : resolvedTheme === "dark" ? "🌙" : "☀️";
+  const themeLabel = theme === "system" ? "System" : theme === "dark" ? "Dark" : "Light";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -44,9 +56,20 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <Link to="/admin/login" className="nav__cta">
-          Admin
-        </Link>
+        <div className="nav__actions">
+          <button
+            className="nav__theme-toggle"
+            onClick={cycleTheme}
+            aria-label={`Theme: ${themeLabel}. Click to change.`}
+            title={`Theme: ${themeLabel}`}
+          >
+            <span>{themeIcon}</span>
+          </button>
+
+          <Link to="/admin/login" className="nav__cta">
+            Admin
+          </Link>
+        </div>
 
         {/* Hamburger */}
         <button
@@ -72,6 +95,11 @@ const Navbar = () => {
           <li>
             <Link to="/admin/login" onClick={() => setMenuOpen(false)}>Admin</Link>
           </li>
+          <li>
+            <button className="mobile-theme-toggle" onClick={cycleTheme}>
+              {themeIcon} {themeLabel} Mode
+            </button>
+          </li>
         </ul>
       </div>
 
@@ -85,7 +113,7 @@ const Navbar = () => {
           justify-content: space-between;
           padding: 0 clamp(20px, 5vw, 64px);
           z-index: 500;
-          background: rgba(0,0,0,0.0);
+          background: transparent;
           transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
         }
         .nav::before {
@@ -97,15 +125,16 @@ const Navbar = () => {
           opacity: 0.9;
         }
         .nav--scrolled {
-          background: rgba(5,5,8,0.85);
+          background: var(--bg);
+          opacity: 0.97;
           backdrop-filter: blur(16px);
-          box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+          box-shadow: 0 1px 0 var(--border);
         }
         .nav__logo {
           font-size: 19px;
           font-weight: 800;
           letter-spacing: -0.02em;
-          color: #fff;
+          color: var(--text);
         }
         .nav__links {
           display: flex;
@@ -117,7 +146,7 @@ const Navbar = () => {
           font-weight: 600;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.5);
+          color: var(--text-50);
           position: relative;
           transition: color 0.2s;
         }
@@ -126,25 +155,52 @@ const Navbar = () => {
           position: absolute;
           bottom: -3px; left: 0;
           width: 0; height: 1.5px;
-          background: #8b5cf6;
+          background: var(--accent);
           transition: width 0.3s ease;
         }
-        .nav__link:hover { color: #fff; }
+        .nav__link:hover { color: var(--text); }
         .nav__link:hover::after { width: 100%; }
+
+        .nav__actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        /* ── Theme toggle ── */
+        .nav__theme-toggle {
+          width: 38px; height: 38px;
+          display: flex; align-items: center; justify-content: center;
+          border-radius: 50%;
+          border: 1.5px solid var(--border);
+          background: var(--bg-card);
+          font-size: 15px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          margin-right: 4px;
+        }
+        .nav__theme-toggle:hover { border-color: var(--accent); transform: rotate(15deg); }
+        .mobile-theme-toggle {
+          background: none; border: none;
+          font-size: 22px; font-weight: 700;
+          color: var(--text); cursor: pointer;
+          letter-spacing: -0.01em;
+        }
+
         .nav__cta {
           font-size: 13px;
           font-weight: 600;
           letter-spacing: 0.04em;
           padding: 9px 22px;
-          border: 1.5px solid rgba(255,255,255,0.7);
-          color: #fff;
+          border: 1.5px solid var(--text-60);
+          color: var(--text);
           border-radius: 99px;
           transition: all 0.25s ease;
         }
         .nav__cta:hover {
-          background: #fff;
-          color: #000;
-          border-color: #fff;
+          background: var(--text);
+          color: var(--bg);
+          border-color: var(--text);
         }
         .nav__burger {
           display: none;
@@ -157,7 +213,7 @@ const Navbar = () => {
         .nav__burger span {
           display: block;
           width: 24px; height: 2px;
-          background: #fff;
+          background: var(--text);
           border-radius: 2px;
           transition: transform 0.3s ease, opacity 0.3s ease;
         }
@@ -169,7 +225,7 @@ const Navbar = () => {
         .mobile-menu {
           position: fixed;
           inset: 0;
-          background: #050505;
+          background: var(--bg);
           z-index: 490;
           display: flex;
           align-items: center;
@@ -193,13 +249,13 @@ const Navbar = () => {
           font-size: clamp(32px, 8vw, 56px);
           font-weight: 800;
           letter-spacing: -0.02em;
-          color: #fff;
+          color: var(--text);
           transition: color 0.2s;
         }
-        .mobile-menu ul a:hover { color: #8b5cf6; }
+        .mobile-menu ul a:hover { color: var(--accent); }
 
         @media (max-width: 860px) {
-          .nav__links, .nav__cta { display: none; }
+          .nav__links, .nav__actions { display: none; }
           .nav__burger { display: flex; }
         }
       `}</style>

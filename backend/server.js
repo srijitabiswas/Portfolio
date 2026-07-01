@@ -9,6 +9,7 @@ import authRoutes from "./routes/auth.js";
 import projectRoutes from "./routes/projects.js";
 import resumeRoutes from "./routes/resume.js";
 import uploadRoutes from "./routes/upload.js";
+import contactRoutes from "./routes/contact.js";
 import {
   certificationRoutes,
   experienceRoutes,
@@ -26,6 +27,16 @@ const app = express();
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 app.use(cors({ origin: process.env.FRONTEND_URL || "*" }));
 app.use(express.json({ limit: "5mb" }));
+
+// Collapse accidental double slashes (e.g. a frontend env var with a
+// trailing slash turning "/api/" + "/contact" into "/api//contact")
+// so a stray slash never falls through to the 404 handler below.
+app.use((req, res, next) => {
+  if (req.url.includes("//")) {
+    req.url = req.url.replace(/\/{2,}/g, "/");
+  }
+  next();
+});
 
 // Rate-limit the login route specifically — this is the most attacked endpoint
 const loginLimiter = rateLimit({
@@ -45,6 +56,7 @@ app.use("/api/exploring", exploringRoutes);
 app.use("/api/social-links", socialLinkRoutes);
 app.use("/api/resume", resumeRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/contact", contactRoutes);
 
 app.use("/uploads", express.static("uploads"));
 

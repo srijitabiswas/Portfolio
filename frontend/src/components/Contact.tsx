@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/+$/, "");
 
 const DEFAULT_LINKS = [
   { platform: "Email",    url: "mailto:srijitabiswas05@gmail.com" },
@@ -15,6 +15,36 @@ export default function Contact() {
   const ref    = useRef<HTMLElement>(null);
   const [copied, setCopied] = useState(false);
   const [links, setLinks] = useState(DEFAULT_LINKS);
+
+  /* Contact form */
+  const [formOpen, setFormOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [formEmail, setFormEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [formError, setFormError] = useState("");
+
+  const submitContactForm = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormError("");
+    setSending(true);
+    try {
+      const res = await fetch(`${API_URL}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email: formEmail, message }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Failed to send message.");
+      setSent(true);
+      setName(""); setFormEmail(""); setMessage("");
+    } catch (err: any) {
+      setFormError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -58,27 +88,84 @@ export default function Contact() {
     <section ref={ref} className="ct" id="contact">
       <div className="ct-wrap s-wrap">
 
-        {/* ── TOP: heading block ── */}
-        <p className="ct-eyebrow">CONTACT</p>
+        {/* ── TOP: heading block (left) + contact form (right, opens on click) ── */}
+        <div className="ct-top-grid">
+          <div className="ct-top-left">
+            <p className="ct-eyebrow">CONTACT</p>
 
-        <h2 className="ct-heading">
-          <span className="ct-heading-line1">Let's build something</span><br/>
-          <span className="ct-heading-accent">meaningful together</span>
-        </h2>
+            <h2 className="ct-heading">
+              <span className="ct-heading-line1">LET'S BUILD SOMETHING</span><br/>
+              <span className="ct-heading-accent">MEANINGFUL TOGETHER</span>
+            </h2>
 
-        <p className="ct-tagline">
-          Available for internships, collaborations, and project discussions.<br/>
-          Feel free to reach out — I'd love to hear from you.
-        </p>
+            <p className="ct-tagline">
+              Available for internships, collaborations, and project discussions.<br/>
+              Feel free to reach out — I'd love to hear from you.
+            </p>
 
-        {/* CTA button row */}
-        <div className="ct-cta-row">
-          <a href={emailUrl} className="ct-cta-btn">
-            Send me a message →
-          </a>
-          <button className="ct-copy-btn" onClick={copyEmail}>
-            {copied ? "✓ Copied!" : "Copy email"}
-          </button>
+            {/* CTA button row */}
+            <div className="ct-cta-row">
+              <button className="ct-cta-btn" onClick={() => { setFormOpen(true); setSent(false); }}>
+                Send me a message →
+              </button>
+              <button className="ct-copy-btn" onClick={copyEmail}>
+                {copied ? "✓ Copied!" : "Copy email"}
+              </button>
+            </div>
+          </div>
+
+          {/* Form panel — appears in the empty right space on click */}
+          <div className={`ct-form-col ${formOpen ? "ct-form-col--open" : ""}`}>
+            {formOpen && (
+              <div className="ct-form-panel">
+                {sent ? (
+                  <div className="ct-form-success">
+                    <p className="ct-form-success-icon">✓</p>
+                    <p className="ct-form-success-title">Message sent!</p>
+                    <p className="ct-form-success-sub">Thanks for reaching out — I'll get back to you soon.</p>
+                    <button className="ct-form-close" onClick={() => setFormOpen(false)}>Close</button>
+                  </div>
+                ) : (
+                  <form onSubmit={submitContactForm}>
+                    <button type="button" className="ct-form-x" onClick={() => setFormOpen(false)} aria-label="Close">✕</button>
+                    <p className="ct-form-title">Send a message</p>
+                    <p className="ct-form-sub">This goes straight to my inbox — I read every one.</p>
+
+                    {formError && <div className="ct-form-error">{formError}</div>}
+
+                    <label className="ct-form-label">Your name</label>
+                    <input
+                      className="ct-form-input"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                    />
+
+                    <label className="ct-form-label">Your email</label>
+                    <input
+                      type="email"
+                      className="ct-form-input"
+                      value={formEmail}
+                      onChange={(e) => setFormEmail(e.target.value)}
+                      required
+                    />
+
+                    <label className="ct-form-label">Message</label>
+                    <textarea
+                      className="ct-form-textarea"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      required
+                    />
+
+                    <button type="submit" className="ct-form-submit" disabled={sending}>
+                      {sending ? "Sending…" : "Send Message →"}
+                    </button>
+                  </form>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* ── DIVIDER ── */}
@@ -115,7 +202,8 @@ export default function Contact() {
             <div className="ct-links">
               {socialOnly.map((l) => (
                 <a key={l.platform} href={l.url} target="_blank" rel="noreferrer" className="ct-link">
-{l.platform} <span className="ct-arr">↗</span>                </a>
+                  {l.platform} <span className="ct-arr">↗</span>  
+                </a>
               ))}
             </div>
           </div>
@@ -145,11 +233,111 @@ export default function Contact() {
       <style>{`
         /* ── BASE ── */
         .ct {
-          background: #000;
-          color: #fff;
+          background: var(--bg);
+          color: var(--text);
           padding: clamp(48px,6vw,80px) clamp(20px,5vw,60px) 0;
         }
         .ct-wrap { padding-bottom: clamp(48px,6vw,80px); }
+
+        /* ── TOP GRID: heading (left) + form panel (right empty space) ── */
+        .ct-top-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+          align-items: start;
+        }
+        .ct-top-left { min-width: 0; }
+
+        .ct-form-col { position: relative; min-height: 1px; }
+        .ct-form-panel {
+          background: rgba(var(--text-rgb),.03);
+          border: 1px solid rgba(var(--text-rgb),.1);
+          border-radius: 16px;
+          padding: 32px;
+          animation: ctFormIn .35s cubic-bezier(.22,1,.36,1);
+        }
+        @keyframes ctFormIn {
+          from { opacity: 0; transform: translateY(14px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .ct-form-x {
+          position: absolute; top: 16px; right: 16px;
+          background: none; border: none; color: rgba(var(--text-rgb),.4);
+          font-size: 16px; cursor: pointer; transition: color .2s;
+        }
+        .ct-form-x:hover { color: var(--text); }
+
+        .ct-form-title { font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+        .ct-form-sub   { font-size: 12.5px; color: rgba(var(--text-rgb),.45); margin-bottom: 22px; }
+
+        .ct-form-label {
+          display: block; font-size: 11px; font-weight: 700;
+          letter-spacing: .08em; text-transform: uppercase;
+          color: rgba(var(--text-rgb),.4); margin-bottom: 6px; margin-top: 16px;
+        }
+        .ct-form-label:first-of-type { margin-top: 0; }
+
+        .ct-form-input, .ct-form-textarea {
+          width: 100%;
+          background: rgba(var(--text-rgb),.04);
+          border: 1px solid rgba(var(--text-rgb),.14);
+          border-radius: 8px;
+          padding: 11px 14px;
+          color: var(--text);
+          font-size: 14px;
+          font-family: var(--font);
+        }
+        .ct-form-input:focus, .ct-form-textarea:focus {
+          outline: none; border-color: #8b5cf6;
+          background: rgba(139,92,246,.06);
+        }
+        .ct-form-textarea { min-height: 110px; resize: vertical; }
+
+        .ct-form-submit {
+          width: 100%;
+          margin-top: 22px;
+          padding: 13px 0;
+          background: #8b5cf6;
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          font-size: 14px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all .2s;
+          box-shadow: 0 4px 20px rgba(139,92,246,.35);
+        }
+        .ct-form-submit:hover { background: #7c3aed; transform: translateY(-1px); }
+        .ct-form-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+        .ct-form-error {
+          background: rgba(239,68,68,.1);
+          border: 1px solid rgba(239,68,68,.3);
+          color: #f87171;
+          padding: 10px 14px;
+          border-radius: 8px;
+          font-size: 13px;
+          margin-bottom: 16px;
+        }
+
+        .ct-form-success { text-align: center; padding: 20px 0; }
+        .ct-form-success-icon {
+          width: 48px; height: 48px; line-height: 48px;
+          border-radius: 50%; background: rgba(34,197,94,.15); color: #4ade80;
+          font-size: 22px; font-weight: 800; margin: 0 auto 16px;
+        }
+        .ct-form-success-title { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+        .ct-form-success-sub   { font-size: 13px; color: rgba(var(--text-rgb),.5); margin-bottom: 20px; }
+        .ct-form-close {
+          padding: 9px 22px; border-radius: 8px;
+          background: rgba(var(--text-rgb),.06); border: 1px solid rgba(var(--text-rgb),.18);
+          color: var(--text); font-size: 13px; font-weight: 600; cursor: pointer;
+        }
+
+        @media(max-width: 800px) {
+          .ct-top-grid { grid-template-columns: 1fr; }
+        }
 
         /* ── EYEBROW ── */
         .ct-eyebrow {
@@ -167,7 +355,7 @@ export default function Contact() {
           font-weight: 800;
           letter-spacing: -.03em;
           line-height: 1.05;
-          color: #fff;
+          color: var(--text);
           margin-bottom: 20px;
           max-width: 100%;
           width: fit-content;
@@ -179,7 +367,7 @@ export default function Contact() {
         .ct-tagline {
           font-size: clamp(14px,1.4vw,17px);
           line-height: 1.78;
-          color: rgba(255,255,255,.42);
+          color: rgba(var(--text-rgb),.42);
           font-weight: 300;
           max-width: 500px;
           margin-bottom: 36px;
@@ -193,6 +381,8 @@ export default function Contact() {
           padding: 13px 28px;
           background: #8b5cf6;
           color: #fff;
+          border: none;
+          cursor: pointer;
           border-radius: 8px;
           font-size: 14px; font-weight: 700;
           text-decoration: none;
@@ -204,7 +394,7 @@ export default function Contact() {
 
         .ct-copy-btn {
           font-size: 13px; font-weight: 600;
-          color: rgba(255,255,255,.4);
+          color: rgba(var(--text-rgb),.4);
           background: none; border: none;
           cursor: pointer;
           font-family: var(--font);
@@ -216,7 +406,7 @@ export default function Contact() {
         /* ── DIVIDER ── */
         .ct-divider {
           height: 1px;
-          background: rgba(255,255,255,.1);
+          background: rgba(var(--text-rgb),.1);
           margin-bottom: 52px;
         }
 
@@ -237,19 +427,19 @@ export default function Contact() {
           font-weight: 600;
           letter-spacing: .1em;
           text-transform: uppercase;
-          color: rgba(255,255,255,.35);
+          color: rgba(var(--text-rgb),.35);
           margin-bottom: 10px;
         }
         .ct-col-val {
           font-size: clamp(14px,1.3vw,16px);
           font-weight: 500;
-          color: #fff;
+          color: var(--text);
           margin-bottom: 4px;
           line-height: 1.5;
         }
         .ct-col-sub {
           font-size: 12px;
-          color: rgba(255,255,255,.38);
+          color: rgba(var(--text-rgb),.38);
           font-weight: 400;
           line-height: 1.6;
         }
@@ -260,7 +450,7 @@ export default function Contact() {
         .ct-col-link {
           font-size: clamp(13px,1.2vw,15px);
           font-weight: 500;
-          color: #fff;
+          color: var(--text);
           text-decoration: none;
           transition: color .2s;
           display: inline-block;
@@ -273,7 +463,7 @@ export default function Contact() {
         .ct-link {
           font-size: clamp(15px,1.6vw,19px);
           font-weight: 500;
-          color: #fff;
+          color: var(--text);
           text-decoration: none;
           display: inline-flex;
           align-items: center;
@@ -284,7 +474,7 @@ export default function Contact() {
         .ct-link:hover { color: #8b5cf6; }
         .ct-arr {
           font-size: 14px;
-          color: rgba(255,255,255,.4);
+          color: rgba(var(--text-rgb),.4);
           transition: color .2s, transform .2s;
         }
         .ct-link:hover .ct-arr { color: #8b5cf6; transform: translate(2px,-2px); }
@@ -294,7 +484,7 @@ export default function Contact() {
         .ct-open-item {
           font-size: clamp(14px,1.3vw,16px);
           font-weight: 500;
-          color: #fff;
+          color: var(--text);
           line-height: 1.65;
         }
 
@@ -302,7 +492,7 @@ export default function Contact() {
         .ct-credit-label {
           font-size: clamp(14px,1.3vw,16px);
           font-weight: 400;
-          color: rgba(255,255,255,.55);
+          color: rgba(var(--text-rgb),.55);
           line-height: 1.6;
           margin: 0;
         }
@@ -312,7 +502,7 @@ export default function Contact() {
         }
         .ct-year {
           font-size: 13px;
-          color: rgba(255,255,255,.25);
+          color: rgba(var(--text-rgb),.25);
           font-weight: 400;
         }
 

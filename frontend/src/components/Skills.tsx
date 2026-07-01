@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/+$/, "");
 
 const CATEGORY_COLORS = {
   "Languages": "#fbbf24",
@@ -372,8 +372,8 @@ export default function Skills() {
         /* ── BASE ── */
         .sk {
           padding: clamp(80px,10vw,120px) clamp(20px,5vw,60px) clamp(20px,3vw,40px);
-          background: #000;
-          color: #fff;
+          background: var(--bg);
+          color: var(--text);
         }
 
         /* ══ SHARED HEADING SYSTEM ══ */
@@ -383,7 +383,7 @@ export default function Skills() {
           font-weight: 900;
           letter-spacing: -.03em;
           line-height: .95;
-          color: #fff;
+          color: var(--text);
           margin: 0;
         }
         .sk-title-accent { color: #8b5cf6; }
@@ -394,7 +394,7 @@ export default function Skills() {
         /* Faint horizontal rule between skill cards and Hackathons */
         .sk-section-divider {
           height: 1px;
-          background: rgba(255,255,255,.08);
+          background: rgba(var(--text-rgb),.08);
           margin-bottom: 64px;
         }
 
@@ -402,7 +402,7 @@ export default function Skills() {
         .sk-block-title {
           margin-bottom: 28px;
           padding-bottom: 20px;
-          border-bottom: 1px solid rgba(255,255,255,.08);
+          border-bottom: 1px solid rgba(var(--text-rgb),.08);
         }
 
         /* ── Skill Groups ── */
@@ -414,8 +414,8 @@ export default function Skills() {
           margin-bottom: 56px;
         }
         .sk-group {
-          background: #0d0d0d;
-          border: 1px solid #1a1a1a;
+          background: var(--bg-elevated);
+          border: 1px solid var(--border);
           border-radius: 16px;
           padding: 22px 24px;
           transition: border-color .2s, transform .2s;
@@ -430,9 +430,9 @@ export default function Skills() {
           border-radius: 99px;
           font-size: 12px;
           font-weight: 600;
-          color: #ffffff;
-          background: #1a1a1a;
-          border: 1px solid #2a2a2a;
+          color: var(--text);
+          background: var(--bg-elevated);
+          border: 1px solid var(--border);
           transition: all .2s;
           display: inline-block;
         }
@@ -450,8 +450,8 @@ export default function Skills() {
         .sk-hacks { display:flex; flex-direction:column; gap:12px; }
         .sk-hack  {
         overflow: hidden;
-          background: #0d0d0d;
-          border: 1px solid #1a1a1a;
+          background: var(--bg-elevated);
+          border: 1px solid var(--border);
           border-radius: 14px;
           padding: 20px 22px;
           transition: border-color .2s, transform .2s;
@@ -477,7 +477,7 @@ export default function Skills() {
         .sk-hack-view-project:hover {
           background: rgba(139,92,246,.2);
           border-color: rgba(167,139,250,.6);
-          color: #fff;
+          color: var(--text);
         }
 
         /* "View All" toggle button — used for both Hackathons and Certifications */
@@ -490,7 +490,7 @@ export default function Skills() {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: .02em;
-  color: rgba(255,255,255,.55);
+  color: rgba(var(--text-rgb),.55);
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -504,7 +504,7 @@ export default function Skills() {
           display:flex; justify-content:space-between;
           align-items:flex-start; gap:12px; margin-bottom:10px; flex-wrap:wrap;
         }
-        .sk-hack-name  { font-size:16px; font-weight:700; color:#fff; margin-bottom:5px; }
+        .sk-hack-name  { font-size:16px; font-weight:700; color:var(--text); margin-bottom:5px; }
         .sk-hack-badge {
           display:inline-block; font-size:12px; font-weight:600;
           color:#fbbf24;
@@ -512,10 +512,10 @@ export default function Skills() {
           border: 1px solid rgba(251,191,36,.25);
           border-radius:99px; padding:3px 12px;
         }
-        .sk-hack-date  { font-size:11px; color:rgba(255,255,255,.3); white-space:nowrap; }
+        .sk-hack-date  { font-size:11px; color:rgba(var(--text-rgb),.3); white-space:nowrap; }
         .sk-hack-bullets { list-style:none; display:flex; flex-direction:column; gap:5px; }
         .sk-hack-bullets li {
-          font-size:13px; color:rgba(255,255,255,.5); font-weight:300;
+          font-size:13px; color:rgba(var(--text-rgb),.5); font-weight:300;
           padding-left:16px; position:relative; line-height:1.6;
         }
         .sk-hack-bullets li::before {
@@ -537,8 +537,8 @@ export default function Skills() {
           align-items: center;
           gap: 16px;
           padding: 18px 22px;
-          background: #0d0d0d;
-          border: 1px solid #2a2a2a;
+          background: var(--bg-elevated);
+          border: 1px solid var(--border);
           border-radius: 12px;
           text-decoration: none;
           transition: background .2s, border-color .2s, transform .2s;
@@ -546,7 +546,7 @@ export default function Skills() {
           visibility: visible;
         }
         .sk-cert-item:hover {
-          background: #131318;
+          background: rgba(var(--text-rgb),.05);
           border-color: #8b5cf6;
           transform: translateX(4px);
         }
@@ -569,14 +569,14 @@ export default function Skills() {
         .sk-cert-name {
           font-size: 14px;
           font-weight: 600;
-          color: #ffffff;
+          color: var(--text);
           margin-bottom: 4px;
           line-height: 1.45;
           white-space: normal;
         }
         .sk-cert-org {
           font-size: 11px;
-          color: rgba(255,255,255,0.5);
+          color: rgba(var(--text-rgb),0.5);
         }
         .sk-cert-link {
           font-size: 12px;
@@ -593,8 +593,8 @@ export default function Skills() {
           gap: 12px;
         }
         .sk-edu-card {
-          background: #0d0d0d;
-          border: 1px solid #1a1a1a;
+          background: var(--bg-elevated);
+          border: 1px solid var(--border);
           border-radius: 14px;
           padding: 20px 22px;
           display: flex;
@@ -604,10 +604,10 @@ export default function Skills() {
         }
         .sk-edu-card:hover { border-color: rgba(139,92,246,.35); }
         .sk-edu-icon   { font-size:24px; flex-shrink:0; }
-        .sk-edu-degree { font-size:15px; font-weight:700; color:#fff; margin-bottom:4px; }
+        .sk-edu-degree { font-size:15px; font-weight:700; color:var(--text); margin-bottom:4px; }
         .sk-edu-school { font-size:13px; font-weight:600; color:#8b5cf6; margin-bottom:8px; }
         .sk-edu-meta   { display:flex; gap:14px; flex-wrap:wrap; }
-        .sk-edu-meta span { font-size:11px; color:rgba(255,255,255,.4); }
+        .sk-edu-meta span { font-size:11px; color:rgba(var(--text-rgb),.4); }
 
         /* ── Currently Exploring ── */
         .sk-exploring { display:flex; flex-wrap:wrap; gap:10px; }
@@ -616,16 +616,16 @@ export default function Skills() {
           border-radius: 99px;
           font-size: 13px;
           font-weight: 600;
-          background: #0d0d0d;
-          border: 1.5px solid #2a2a2a;
-          color: rgba(255,255,255,.75);
+          background: var(--bg-elevated);
+          border: 1.5px solid var(--border);
+          color: rgba(var(--text-rgb),.75);
           transition: all .2s;
           display: inline-block;
         }
         .sk-explore-pill:hover {
           background: rgba(139,92,246,.15);
           border-color: #8b5cf6;
-          color: #fff;
+          color: var(--text);
         }
 
         /* ── Languages ── */
@@ -635,8 +635,8 @@ export default function Skills() {
           gap: 12px;
         }
         .sk-lang-row {
-          background: #0d0d0d;
-          border: 1px solid #1a1a1a;
+          background: var(--bg-elevated);
+          border: 1px solid var(--border);
           border-radius: 12px;
           padding: 18px 20px;
           display: flex;
@@ -647,12 +647,12 @@ export default function Skills() {
         }
         .sk-lang-row:hover { border-color: rgba(139,92,246,.35); }
         .sk-lang-info  { display:flex; flex-direction:column; gap:3px; }
-        .sk-lang-name  { font-size:16px; font-weight:700; color:#fff; }
-        .sk-lang-level { font-size:11px; color:rgba(255,255,255,.4); }
+        .sk-lang-name  { font-size:16px; font-weight:700; color:var(--text); }
+        .sk-lang-level { font-size:11px; color:rgba(var(--text-rgb),.4); }
         .sk-lang-dots  { display:flex; gap:8px; }
         .sk-dot        { width:18px; height:18px; border-radius:50%; flex-shrink:0; transition:transform .2s; }
         .sk-dot-on     { background:#8b5cf6; box-shadow:0 0 8px rgba(139,92,246,.5); }
-        .sk-dot-off    { background:transparent; border:2px solid #2a2a2a; }
+        .sk-dot-off    { background:transparent; border:2px solid var(--border); }
         .sk-lang-row:hover .sk-dot-on { transform:scale(1.1); }
 
         @media(max-width:760px){

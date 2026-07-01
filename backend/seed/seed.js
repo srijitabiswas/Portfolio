@@ -4,6 +4,7 @@ import connectDB from "../config/db.js";
 import Project from "../models/Project.js";
 import Hackathon from "../models/Hackathon.js";
 import Certification from "../models/Certification.js";
+import Experience from "../models/Experience.js";
 import { AdminUser, Skill, Exploring, SocialLink } from "../models/misc.js";
 
 dotenv.config();
@@ -495,9 +496,37 @@ await SocialLink.deleteMany({});
 await SocialLink.insertMany(socialLinks);
 console.log(`✅ Seeded ${socialLinks.length} social links.`);
 
-/* Note: Experience and Resume are NOT seeded —
-   Experience has no prior content to migrate (add your real work
-   experience via /admin/experience), and Resume requires an actual
-   PDF file upload, which can't be seeded as text data. */
+/* ── 8. Seed Work Experience ── */
+const experience = [
+  {
+    role: "Product Design Trainee",
+    company: "Employability.life",
+    startDate: new Date("2025-12-01"),
+    endDate: new Date("2026-01-31"),
+    achievements: [
+      "Led user research, wireframing, prototyping, and UI design across product cycles.",
+      "Applied product-thinking frameworks to shape design decisions from concept to delivery.",
+    ],
+    order: 0,
+  },
+  {
+    role: "Social Media Manager",
+    company: "Aperture Alchemist · Student Club",
+    startDate: new Date("2025-04-01"),
+    // no endDate — omitted on purpose so the UI shows "Present"
+    achievements: [
+      "Planned and managed Instagram content strategy for community engagement and event promotion.",
+      "Drove brand identity initiatives and grew community reach through visual storytelling.",
+    ],
+    order: 1,
+  },
+];
+
+await Experience.deleteMany({});
+await Experience.insertMany(experience);
+console.log(`✅ Seeded ${experience.length} work experience entries.`);
+
+/* Note: Resume is NOT seeded — it requires an actual PDF file upload,
+   which can't be seeded as text data. Upload it once via /admin/resume. */
 
 process.exit(0);

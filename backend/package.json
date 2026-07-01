@@ -6,6 +6,7 @@
     "dev": "nodemon server.js",
     "start": "node server.js",
     "seed": "node seed/seed.js",
+    "seed:experience": "node seed/seedExperience.js",
     "reset-admin": "node seed/resetAdminPassword.js"
   },
   "dependencies": {
