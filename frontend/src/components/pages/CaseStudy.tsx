@@ -58,6 +58,7 @@ export default function CaseStudy() {
       accent={data.accent}
       overview={data.caseStudy?.overview || ""}
       problem={data.caseStudy?.problem || ""}
+      research={data.caseStudy?.research || ""}
       solution={data.caseStudy?.solution || ""}
       sections={data.caseStudy?.sections || []}
       links={data.links}

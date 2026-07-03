@@ -7,7 +7,7 @@ const emptyProject = {
   startDate: "", endDate: "", datePrecision: "month", type: "", displayLabel: "",
   cardTags: [], filter: "Dev", links: [], published: true,
   caseStudy: {
-    subtitle: "", tags: [], color: "#1A1A1A", overview: "", problem: "", solution: "",
+    subtitle: "", tags: [], color: "#1A1A1A", overview: "", problem: "", research: "", solution: "",
     sections: [], techStack: [], team: [],
   },
 };
