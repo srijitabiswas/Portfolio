@@ -193,7 +193,7 @@ export default function Contact() {
             <div className="ct-col-gap"/>
 
             <p className="ct-col-label">Response time</p>
-            <p className="ct-col-val">Usually within 24 hours ⚡</p>
+            <p className="ct-col-val">Within 24 hours ⚡</p>
           </div>
 
           {/* Col 2 — Social */}
@@ -213,7 +213,7 @@ export default function Contact() {
             <p className="ct-col-label">Open to</p>
             <div className="ct-open-list">
               <p className="ct-open-item">UI/UX Designer</p>
-              <p className="ct-open-item">Frontend Developer</p>
+              <p className="ct-open-item">Full Stack Developer</p>
               <p className="ct-open-item">AI/ML Projects</p>
             </div>
             <p className="ct-col-sub" style={{marginTop:"6px"}}>Internships &amp; full-time roles</p>
