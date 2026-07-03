@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -94,8 +95,8 @@ export default function Contact() {
             <p className="ct-eyebrow">CONTACT</p>
 
             <h2 className="ct-heading">
-              <span className="ct-heading-line1">LET'S BUILD SOMETHING</span><br/>
-              <span className="ct-heading-accent">MEANINGFUL TOGETHER</span>
+              <span className="ct-heading-line1">Let's build something</span><br/>
+              <span className="ct-heading-accent">meaningful together</span>
             </h2>
 
             <p className="ct-tagline">
@@ -193,7 +194,7 @@ export default function Contact() {
             <div className="ct-col-gap"/>
 
             <p className="ct-col-label">Response time</p>
-            <p className="ct-col-val">Within 24 hours ⚡</p>
+            <p className="ct-col-val">Usually within 24 hours ⚡</p>
           </div>
 
           {/* Col 2 — Social */}
@@ -213,7 +214,7 @@ export default function Contact() {
             <p className="ct-col-label">Open to</p>
             <div className="ct-open-list">
               <p className="ct-open-item">UI/UX Designer</p>
-              <p className="ct-open-item">Full Stack Developer</p>
+              <p className="ct-open-item">Frontend Developer</p>
               <p className="ct-open-item">AI/ML Projects</p>
             </div>
             <p className="ct-col-sub" style={{marginTop:"6px"}}>Internships &amp; full-time roles</p>
@@ -222,7 +223,12 @@ export default function Contact() {
           {/* Col 4 — Credit + year */}
           <div className="ct-col ct-col-right">
             <p className="ct-credit-label">Designed and Developed</p>
-            <p className="ct-credit-label">by <span className="ct-credit-name">Srijita Biswas</span></p>
+            <p className="ct-credit-label">
+              by <span className="ct-credit-name">Srijita Biswas</span>{" "}
+              <Link to="/admin/login" className="ct-admin-dot" aria-label="Admin login" title="Admin">
+                •
+              </Link>
+            </p>
             <div className="ct-col-gap"/>
             <p className="ct-year">© 2026</p>
           </div>
@@ -500,6 +506,13 @@ export default function Contact() {
           color: #8b5cf6;
           font-weight: 600;
         }
+        .ct-admin-dot {
+          color: rgba(var(--text-rgb),.2);
+          text-decoration: none;
+          font-size: 15px;
+          transition: color 0.2s ease;
+        }
+        .ct-admin-dot:hover { color: #8b5cf6; }
         .ct-year {
           font-size: 13px;
           color: rgba(var(--text-rgb),.25);

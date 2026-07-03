@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 
 const links = [
@@ -65,10 +64,6 @@ const Navbar = () => {
           >
             <span>{themeIcon}</span>
           </button>
-
-          <Link to="/admin/login" className="nav__cta">
-            Admin
-          </Link>
         </div>
 
         {/* Hamburger */}
@@ -92,9 +87,6 @@ const Navbar = () => {
               </a>
             </li>
           ))}
-          <li>
-            <Link to="/admin/login" onClick={() => setMenuOpen(false)}>Admin</Link>
-          </li>
           <li>
             <button className="mobile-theme-toggle" onClick={cycleTheme}>
               {themeIcon} {themeLabel} Mode
@@ -177,7 +169,6 @@ const Navbar = () => {
           font-size: 15px;
           cursor: pointer;
           transition: all 0.2s ease;
-          margin-right: 4px;
         }
         .nav__theme-toggle:hover { border-color: var(--accent); transform: rotate(15deg); }
         .mobile-theme-toggle {
@@ -185,22 +176,6 @@ const Navbar = () => {
           font-size: 22px; font-weight: 700;
           color: var(--text); cursor: pointer;
           letter-spacing: -0.01em;
-        }
-
-        .nav__cta {
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.04em;
-          padding: 9px 22px;
-          border: 1.5px solid var(--text-60);
-          color: var(--text);
-          border-radius: 99px;
-          transition: all 0.25s ease;
-        }
-        .nav__cta:hover {
-          background: var(--text);
-          color: var(--bg);
-          border-color: var(--text);
         }
         .nav__burger {
           display: none;
