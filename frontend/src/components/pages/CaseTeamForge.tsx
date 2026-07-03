@@ -12,6 +12,7 @@ export default function CaseTeamForge() {
       accent="#8B5CF6"
       overview="TeamForge helps students turn ideas into real projects by guiding them through the complete journey: IDEA → TEAM → CHEMISTRY → BUILD → EXECUTION. Unlike traditional skill-matching platforms, it focuses on finding the right collaborators, verifying team compatibility, enabling communication, and helping teams execute successfully until project completion."
       problem="Students often have great project ideas but struggle to know what roles their idea actually requires, find teammates with complementary skills, verify whether a team will actually work well together, and stay organized once the team is formed. Most platforms stop at 'matching' and leave execution to chance."
+      research="Our research focused on the challenges of designing a user-friendly collaboration platform for student innovators. We identified key pain points related to team formation, skill matching, and project execution."
       solution="TeamForge runs the full lifecycle in one place. IdeaForge converts a plain-language idea into required roles, must-have vs nice-to-have skills, and a viability score. AI Match and Discover Talent surface the right collaborators. A TeamDNA compatibility quiz scores chemistry and flags conflict risk before a team commits. SprintBoard then carries the team through execution with task tracking and an AI Sprint Coach."
       sections={[
         {

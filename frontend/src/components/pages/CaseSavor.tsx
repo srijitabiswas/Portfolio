@@ -12,6 +12,7 @@ export default function CaseSavor() {
       accent="#D4712A"
       overview="Savor is a food ordering experience built around one idea: less is more. Instead of showing every restaurant in the city, Savor guides users to the right meal through budget-first filtering, curated recommendations, and Crave Assistant — a conversational AI that understands natural-language cravings like 'something spicy but light' and returns the top 3 matches with clear reasoning, backed by a real MongoDB database of 1,100+ dishes."
       problem="Most food delivery apps prioritize endless scrolling and promotion-heavy feeds over decision-making. Users open the app hungry but spend more time browsing than ordering — overwhelmed by choice, weak personalization, and cluttered layouts."
+      research="Our research focused on the challenges of designing a user-friendly food ordering platform. We identified key pain points related to decision fatigue, cognitive load, and the need for a more personalized and streamlined ordering experience."
       solution="Savor flips the model by leading with budget and craving instead of menus. A custom intent-detection layer parses budget, spice level, diet, allergens, and lifestyle context directly from natural language, then scores and ranks dishes via MongoDB aggregation — zero external AI API cost. The result: a curated shortlist instead of an endless feed, and a 'why you'll like this' reason behind every recommendation."
       sections={[
         {

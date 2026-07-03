@@ -12,6 +12,7 @@ export default function CaseZeroShield() {
       accent="#C43030"
       overview="ZeroShield AI is a full-stack cybersecurity platform that simulates a real-world Security Operations Centre (SOC). It provides a unified dashboard for real-time threat monitoring, AI-based anomaly detection, attack simulation, and automated incident response — making complex security operations understandable and actionable."
       problem="Traditional cybersecurity systems are fragmented, complex to interpret, and require deep expertise to operate. Security analysts juggle multiple tools, dashboards, and alert streams — leading to alert fatigue, slow response times, and missed threats. There's a critical need for a unified platform that simplifies threat visibility and response."
+      research="Our research focused on the challenges of designing a user-friendly cybersecurity platform. We identified key pain points related to threat visibility, response times, and the need for a more intuitive way to manage and interpret security data."
       solution="Designed and built a centralised SOC dashboard that integrates monitoring, detection, simulation, and response into a single interface. The platform uses an AI logic layer for anomaly detection, a simulation engine for attack modelling, and automated response actions — all presented through a clear, hierarchy-driven UI that supports fast decision-making."
       sections={[
         {

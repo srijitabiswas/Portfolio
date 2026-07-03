@@ -12,6 +12,7 @@ export default function CaseWellness() {
       accent="#2E5FE8"
       overview="Wellness Personas of SNU is an interactive web application that identifies a user's lifestyle persona based on their daily habits. It combines a trained KMeans clustering model with a human-centred Streamlit interface to help Sister Nivedita University students understand and reflect on their wellness patterns in an engaging, personalised way."
       problem="Students often lack awareness about how their daily habits — food choices, social activity, exercise, hobbies — connect to their overall wellness. There was no engaging, low-friction way for students to reflect on these patterns and get actionable, personalised insights without filling out long surveys or visiting a counsellor."
+      research="Our research focused on the challenges of designing a user-friendly wellness assessment tool. We identified key pain points related to user engagement, data privacy, and the need for a more intuitive way to visualize and understand personal wellness patterns."
       solution="Built an interactive system that collects 8 lifestyle inputs through simple sliders, runs them through a pre-trained KMeans clustering model, and instantly assigns the user to one of 10 meaningful personas. Each persona comes with a radar chart visualisation, a descriptive profile, and a motivational quote — making the experience feel personal, not clinical."
       sections={[
         {

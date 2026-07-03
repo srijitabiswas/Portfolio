@@ -12,6 +12,7 @@ export default function CaseFakeNews() {
       accent="#C4A000"
       overview="A supervised machine learning system that automatically classifies news articles as Fake or Real using natural language processing techniques. With misinformation spreading rapidly across digital platforms, this project explores how ML can provide a scalable first-line defence against fake news."
       problem="Fake news spreads faster than fact-checks. Manual verification is slow, doesn't scale, and is impossible to apply to the volume of content published daily. There was a need for an automated system that could analyse news text and classify it reliably — helping platforms, journalists, and readers make faster decisions about content credibility."
+      research="Our research focused on the challenges of classifying misinformation in digital environments. We examined the linguistic patterns and metadata associated with fake news articles, identifying key indicators that distinguish them from credible sources."
       solution="Built a supervised ML classification pipeline that preprocesses raw news text, extracts TF-IDF features, and classifies articles using Logistic Regression and Passive-Aggressive Classifier. The system achieves 93.58% accuracy on the test set, with balanced precision and recall across both classes."
       sections={[
         {

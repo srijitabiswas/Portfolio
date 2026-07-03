@@ -12,6 +12,7 @@ export default function CaseGlowAI() {
       accent="#EC4899"
       overview="Glow-AI is an AI-powered beauty, grooming, and salon marketplace that delivers personalized beauty analysis, style recommendations, and salon discovery in one seamless experience. It combines computer vision, AI analysis, personalized recommendations, and location-based salon discovery — built end-to-end during the AI Startup Buildathon 2026's Beauty Salon Marketplace Challenge."
       problem="Choosing the right hairstyle, skincare routine, or salon is overwhelming without expert guidance — generic advice doesn't account for someone's actual face shape, skin tone, or budget, and salon discovery apps rarely personalize beyond filters and star ratings."
+      research="Our research focused on the intersection of computer vision and personalized beauty recommendations. We analyzed user behavior in beauty and salon discovery, identifying key pain points in the current market landscape."
       solution="Glow-AI runs a live webcam beauty scan through MediaPipe face landmarking to detect face shape, skin tone, undertone, and facial symmetry — validating lighting, blur, and smile before capture. That analysis feeds a personalized beauty profile, which a Groq-powered LLM concierge (Llama 3.3 70B) uses to give real-time, streamed beauty advice and to rank nearby salons by genuine fit, not just proximity."
       sections={[
         {

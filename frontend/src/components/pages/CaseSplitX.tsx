@@ -12,6 +12,7 @@ export default function CaseSplitX() {
       accent="#2D8653"
       overview="SplitX is a group expense tracking application built during a 36-hour hackathon. It enables users to create groups, add members, log shared expenses, and track who owes whom — all through a clean REST API and structured database schema designed for scale."
       problem="In group settings like trips, shared housing, or events, expense tracking is chaotic. Manual calculations are error-prone, WhatsApp messages get lost, and there's no single source of truth for who paid what. Existing apps are often bloated and require accounts even for simple splitting."
+      research="Our research focused on the challenges of designing a user-friendly group expense tracking platform. We identified key pain points related to data management, user experience, and the need for a scalable backend architecture."
       solution="Built a RESTful backend system with a carefully structured MongoDB schema that captures the full expense lifecycle — from group creation to individual splits. The system uses ObjectId references for clean data relationships and implements cascade deletion to maintain database integrity automatically."
       sections={[
         {

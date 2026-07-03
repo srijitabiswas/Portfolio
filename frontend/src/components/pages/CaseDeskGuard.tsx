@@ -12,6 +12,7 @@ export default function CaseDeskGuard() {
       accent="#2563EB"
       overview="DeskGuard is the operating system of the university library — a full-stack seat management platform built with React + Vite + Tailwind on the frontend and Node.js + Express + MongoDB on the backend. It replaces first-come-first-served chaos with a fair, transparent reservation system across three roles: Student, Librarian, and Admin."
       problem="University libraries struggle with seat hoarding, no-shows, and zero visibility into real occupancy — students wander floors looking for a free desk, while librarians have no way to spot abandoned sessions or manage emergencies efficiently."
+      research="Our research focused on the challenges of managing shared study spaces in university libraries. We identified key pain points related to seat utilization, student behavior, and the need for a transparent, fair reservation system."
       solution="DeskGuard introduces a two-phase reserve-then-check-in flow: a seat is held for 10 minutes after booking, then released automatically if the student doesn't check in. A Responsible Study Score rewards students who honor their reservations and penalizes repeated no-shows, while librarians get a live command center with abandoned-seat detection and a one-tap emergency mode."
       sections={[
         {

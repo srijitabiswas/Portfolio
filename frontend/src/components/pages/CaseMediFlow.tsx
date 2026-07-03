@@ -12,6 +12,7 @@ export default function CaseMediFlow() {
       accent="#22C55E"
       overview="MediFlow is a smart healthcare platform designed to reduce patient waiting time and improve hospital efficiency through real-time queue tracking, intelligent wait-time estimation, and AI-powered recommendations. Instead of simply showing a queue number, MediFlow helps patients make informed decisions by telling them when to leave for the hospital, whether delays have occurred, and how their estimated waiting time changes in real time."
       problem="Traditional hospital token systems only display a queue position — they don't tell patients when to actually leave home, whether the doctor is delayed, or how an emergency case might shift their wait. This leads to patients arriving too early and sitting in crowded waiting rooms, or arriving late and missing their slot entirely."
+      research="Our research focused on the challenges of managing hospital queues and improving patient experience in healthcare settings. We identified key pain points related to wait times, communication, and the need for a more transparent and efficient reservation system."
       solution="MediFlow combines real-time queue monitoring, an AI-based wait-time prediction engine, delay transparency, and smart recommendations into one continuously-updating system. A built-in Smart Decision Assistant tells each patient exactly what to do next — leave now, wait a few more minutes, or be aware of a delay — using live Socket.io events pushed from the backend."
       sections={[
         {

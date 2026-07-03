@@ -12,6 +12,7 @@ export default function CaseLuxeStay() {
       accent="#7C6FCD"
       overview="LuxeStay Villas is a dual-sided rental platform designed through a full product design sprint. The platform serves both property owners listing luxury villas and guests looking to book them, with distinct flows for each user type. Developed as part of the XPMC Xpro Program by Employability.life."
       problem="Existing rental platforms create friction on both sides of the marketplace. Owners struggle with unclear listing flows and lack of trust signals. Guests face confusing booking processes, poor information hierarchy, and no way to verify property authenticity — leading to drop-offs and low conversion rates."
+      research="Our research focused on the challenges of designing a user-friendly luxury rental platform. We identified key pain points in the current market landscape, including the need for trust-building mechanisms and streamlined booking processes."
       solution="Designed a dual-sided platform that simplifies every interaction. Owners get a clear, guided listing experience with trust badges and verification flows. Guests get structured property pages, transparent pricing, and a frictionless booking journey. Every screen was tested and validated through structured user interviews."
       sections={[
         {
