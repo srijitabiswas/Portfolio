@@ -214,7 +214,7 @@ export default function Contact() {
             <p className="ct-col-label">Open to</p>
             <div className="ct-open-list">
               <p className="ct-open-item">UI/UX Designer</p>
-              <p className="ct-open-item">Frontend Developer</p>
+              <p className="ct-open-item">Full Stack MERN Developer</p>
               <p className="ct-open-item">AI/ML Projects</p>
             </div>
             <p className="ct-col-sub" style={{marginTop:"6px"}}>Internships &amp; full-time roles</p>
