@@ -14,7 +14,7 @@ interface CaseLayoutProps {
   accent: string;
   overview: string;
   problem: string;
-  research: string;
+  research?: string | string[];
   solution: string;
   sections: Section[];
   links?: { label: string; href: string; icon?: string }[];
@@ -24,7 +24,7 @@ interface CaseLayoutProps {
  
 export default function CaseLayout({
   num, title, subtitle, category, tags, color, accent,
-  overview, problem, research,  solution, sections, links, team, techStack
+  overview, problem, research, solution, sections, links, team, techStack
 }: CaseLayoutProps) {
   const navigate = useNavigate();
  
@@ -75,21 +75,31 @@ export default function CaseLayout({
             <h3 className="cs-ps-title">Problem</h3>
             <p className="cs-ps-text">{problem}</p>
           </div>
-          
-           {/* RESEARCH & INSIGHTS */}
-        {research && (
-          <div className="cs-section">
-            <h2 className="cs-section-title" style={{ color: accent }}>Research &amp; Insights</h2>
-            <p className="cs-section-text">{research}</p>
-          </div>
-        )}
-        
           <div className="cs-ps-card cs-solution">
             <div className="cs-ps-icon" style={{ background: accent + "15", color: accent }}>✦</div>
             <h3 className="cs-ps-title">Solution</h3>
             <p className="cs-ps-text">{solution}</p>
           </div>
         </div>
+
+        {/* RESEARCH & INSIGHTS */}
+        {research && (
+          <div className="cs-section">
+            <h2 className="cs-section-title" style={{ color: accent }}>Research &amp; Insights</h2>
+            {Array.isArray(research) ? (
+              <ul className="cs-list">
+                {research.map((item, j) => (
+                  <li key={j} className="cs-list-item">
+                    <span className="cs-list-dot" style={{ background: accent }} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="cs-section-text">{research}</p>
+            )}
+          </div>
+        )}
  
         {/* SECTIONS */}
         {sections.map((s, i) => (

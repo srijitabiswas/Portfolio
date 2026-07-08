@@ -63,7 +63,7 @@ const projectSchema = new mongoose.Schema(
       color:    { type: String, default: "#1A1A1A" },
       overview: { type: String, default: "" },
       problem:  { type: String, default: "" },
-      research: { type: String, default: "" },
+      research: { type: mongoose.Schema.Types.Mixed, default: "" }, // "Research & Insights" — string (paragraph) or string[] (bullets)
       solution: { type: String, default: "" },
       sections: [sectionSchema],             // Key Features / Core Innovation / User Flow / Role-Based Architecture / Future Scope / etc.
       techStack: [techGroupSchema],          // Frontend / Backend / Additional / Deployment

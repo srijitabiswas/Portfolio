@@ -1,11 +1,13 @@
 import multer from "multer";
 import sharp from "sharp";
-import path from "path";
-import fs from "fs";
 import crypto from "crypto";
+import { v2 as cloudinary } from "cloudinary";
 
-const UPLOAD_DIR = path.join(process.cwd(), "uploads");
-if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 // Accept images + PDFs (resume can be a PDF, certs can be image or PDF)
 const ALLOWED = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
@@ -23,27 +25,55 @@ export const upload = multer({
   },
 });
 
+function uploadBufferToCloudinary(buffer, options) {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(options, (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+    stream.end(buffer);
+  });
+}
+
 /**
  * Call this AFTER upload.single("file") middleware has run.
- * - PDFs are saved as-is.
- * - Images are resized (max 1600px wide) and converted to webp for a
- *   consistently small file size, regardless of what the admin uploads.
- * Returns the public URL path to store on the document (e.g. "/uploads/xyz.webp").
+ *
+ * Uploads to Cloudinary instead of local disk. This matters because Render
+ * (and most PaaS hosts) use an EPHEMERAL filesystem — anything written to
+ * local disk at runtime is wiped every time the service restarts or
+ * redeploys. That was silently deleting every project thumbnail, cert
+ * image, and resume PDF a few hours/days after upload. Cloudinary URLs are
+ * permanent CDN links, completely independent of the backend's own
+ * filesystem, so this class of bug can't happen again.
+ *
+ * - PDFs are uploaded as-is (resource_type: "raw").
+ * - Images are resized (max 1600px wide) and converted to webp first, then
+ *   uploaded, for a consistently small file size regardless of what the
+ *   admin uploads.
+ *
+ * Returns the full, permanent Cloudinary URL to store on the document.
  */
 export async function processUploadedFile(file) {
   const id = crypto.randomBytes(8).toString("hex");
 
   if (file.mimetype === "application/pdf") {
-    const filename = `${id}.pdf`;
-    fs.writeFileSync(path.join(UPLOAD_DIR, filename), file.buffer);
-    return `/uploads/${filename}`;
+    const result = await uploadBufferToCloudinary(file.buffer, {
+      resource_type: "raw",
+      public_id: `portfolio/${id}`,
+      format: "pdf",
+    });
+    return result.secure_url;
   }
 
-  const filename = `${id}.webp`;
   const resized = await sharp(file.buffer)
     .resize({ width: 1600, withoutEnlargement: true })
     .webp({ quality: 82 })
     .toBuffer();
-  fs.writeFileSync(path.join(UPLOAD_DIR, filename), resized);
-  return `/uploads/${filename}`;
+
+  const result = await uploadBufferToCloudinary(resized, {
+    resource_type: "image",
+    public_id: `portfolio/${id}`,
+    format: "webp",
+  });
+  return result.secure_url;
 }

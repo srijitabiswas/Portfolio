@@ -349,6 +349,20 @@ export default function ProjectForm({ project, onClose }) {
           <textarea className="adm-textarea" value={form.caseStudy.problem} onChange={(e) => setCase("problem", e.target.value)} />
         </div>
         <div className="adm-field">
+          <label>Research &amp; Insights</label>
+          <textarea
+            className="adm-textarea"
+            placeholder="A single paragraph, or one insight per line to show as a bulleted list."
+            value={Array.isArray(form.caseStudy.research) ? form.caseStudy.research.join("\n") : (form.caseStudy.research || "")}
+            onChange={(e) => {
+              const lines = e.target.value.split("\n");
+              const val = lines.length > 1 ? lines.filter((l) => l.trim() !== "") : e.target.value;
+              setCase("research", val);
+            }}
+          />
+          <div className="adm-hint">One line per point becomes a bulleted list on the case study page. A single line stays as a paragraph.</div>
+        </div>
+        <div className="adm-field">
           <label>Solution</label>
           <textarea className="adm-textarea" value={form.caseStudy.solution} onChange={(e) => setCase("solution", e.target.value)} />
         </div>

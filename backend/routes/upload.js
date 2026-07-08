@@ -12,11 +12,9 @@ const router = express.Router();
 router.post("/", requireAdmin, upload.single("file"), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ message: "No file uploaded" });
-    const relativeUrl = await processUploadedFile(req.file);
-    // Return a fully-qualified URL (not just "/uploads/xxx.webp") so it
-    // resolves correctly from the frontend, which runs on a different
-    // origin/port than this backend in both dev and production.
-    const url = `${req.protocol}://${req.get("host")}${relativeUrl}`;
+    // processUploadedFile now returns a full, permanent Cloudinary URL —
+    // no need to prepend this backend's own host to it.
+    const url = await processUploadedFile(req.file);
     res.json({ url });
   } catch (err) {
     res.status(400).json({ message: err.message });

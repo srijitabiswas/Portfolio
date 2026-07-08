@@ -15,8 +15,9 @@ router.post(
   async (req, res, next) => {
     try {
       if (!req.file) return res.status(400).json({ message: "No file uploaded" });
-      const relativeUrl = await processUploadedFile(req.file);
-      req.fileUrl = `${req.protocol}://${req.get("host")}${relativeUrl}`;
+      // processUploadedFile now returns a full, permanent Cloudinary URL —
+      // no need to prepend this backend's own host to it.
+      req.fileUrl = await processUploadedFile(req.file);
       next();
     } catch (err) {
       res.status(400).json({ message: err.message });
