@@ -158,7 +158,7 @@ export default function Projects() {
   const [active, setActive] = useState<Filter>("All");
   const [showAll, setShowAll] = useState(false);
   const [projects, setProjects] = useState<ProjectT[]>(FALLBACK_PROJECTS);
-  console.log(projects.length);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   /* Pull live, admin-managed project data — numbers, dates, content,
@@ -173,6 +173,8 @@ export default function Projects() {
         }
       } catch {
         // Keep FALLBACK_PROJECTS already shown.
+      } finally {
+        setLoading(false);
       }
     })();
   }, []);
@@ -246,10 +248,14 @@ export default function Projects() {
           ))}
         </div>
 
-        {filtered.length > VISIBLE_COUNT && (
-          <button className="pj-view-all-btn" onClick={() => setShowAll((v) => !v)}>
-            {showAll ? "Show Less" : "View All"}
-          </button>
+        {loading ? (
+          <p className="pj-loading-note">Loading more projects…</p>
+        ) : (
+          filtered.length > VISIBLE_COUNT && (
+            <button className="pj-view-all-btn" onClick={() => setShowAll((v) => !v)}>
+              {showAll ? "Show Less" : "View All"}
+            </button>
+          )
         )}
       </div>
 
@@ -296,6 +302,15 @@ export default function Projects() {
 }
 .pj-view-all-btn:hover {
   color: #8b5cf6;
+}
+
+.pj-loading-note {
+  margin: 36px auto 0;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: rgba(var(--text-rgb),.4);
 }
 
         .pj-grid {
