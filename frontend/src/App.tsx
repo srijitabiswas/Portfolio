@@ -24,15 +24,32 @@ import AdminExploring from "./admin/pages/Exploring";
 import AdminSocialLinks from "./admin/pages/SocialLinks";
 import AdminResume from "./admin/pages/ResumeManager";
 
-const Home = () => (
-  <main>
-    <Landing />
-    <About />
-    <Projects />
-    <Skills />
-    <Contact />
-  </main>
-);
+const Home = () => {
+  useEffect(() => {
+    const savedY = sessionStorage.getItem("homeScrollY");
+    if (savedY !== null) {
+      sessionStorage.removeItem("homeScrollY");
+      // Wait for layout (images/fonts/GSAP ScrollTrigger) to settle before
+      // jumping, otherwise the page isn't tall enough yet and the scroll
+      // gets clamped to the wrong section.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: Number(savedY), behavior: "instant" as ScrollBehavior });
+        });
+      });
+    }
+  }, []);
+
+  return (
+    <main>
+      <Landing />
+      <About />
+      <Projects />
+      <Skills />
+      <Contact />
+    </main>
+  );
+};
 
 const App = () => {
   const [ready, setReady] = useState(false);
@@ -43,6 +60,15 @@ const App = () => {
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 2800);
     return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    // Let our own logic (see Home's scroll restore + Projects' save-before-navigate)
+    // own scroll position on back/forward instead of the browser's default,
+    // which was landing on the wrong section after leaving a case study.
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
   }, []);
 
   return (

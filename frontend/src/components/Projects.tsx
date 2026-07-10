@@ -217,10 +217,13 @@ export default function Projects() {
   const VISIBLE_COUNT = 3;
   const visible = showAll ? filtered : filtered.slice(0, VISIBLE_COUNT);
 
-  const openProject = (p: ProjectT) => {
-    if (p.path) navigate(p.path);
-    else if (p.href) window.open(p.href, "_blank", "noopener,noreferrer");
-  };
+ const openProject = (p: ProjectT) => {
+  if (p.path) {
+    sessionStorage.setItem("homeScrollY", String(window.scrollY));
+    navigate(p.path);
+  }
+  else if (p.href) window.open(p.href, "_blank", "noopener,noreferrer");
+};
 
   return (
     <section ref={ref} className="pj" id="projects">

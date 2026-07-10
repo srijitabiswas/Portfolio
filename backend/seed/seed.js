@@ -339,148 +339,6 @@ const projects = [
     },
   },
   {
-    title: "DeskGuard",
-    slug: "deskguard",
-    thumbnail: "/images/deskguard.png",
-    category: "Full-Stack · Library Systems",
-    tagline: "University library seat-management OS with live SVG floor maps, a trust-score system, and abandoned-seat auto-detection.",
-    accent: "#2563EB",
-    icon: "🪪",
-    startDate: new Date("2026-05-01"),
-    datePrecision: "month",
-    type: "Personal Project",
-    cardTags: ["React", "Node.js", "MongoDB", "Framer Motion"],
-    filter: "Dev",
-    links: [
-      { label: "Live Demo", href: "https://deskguard-2.onrender.com/", icon: "🌐" },
-      { label: "View Code", href: "https://github.com/srijitabiswas/DeskGuard", icon: "⌥" },
-    ],
-    caseStudy: {
-      "subtitle": "University library seat-management OS with live SVG floor maps and a trust-score system.",
-      "tags": [
-        "React 18",
-        "Vite",
-        "Tailwind CSS 3",
-        "Framer Motion",
-        "Node.js",
-        "MongoDB"
-      ],
-      "color": "#EAF1FB",
-      "overview": "DeskGuard is a smart university library seat management system that helps students find, reserve, and manage study spaces efficiently while giving librarians and administrators complete visibility into library occupancy. The platform replaces manual seat allocation with a real-time reservation system, interactive floor maps, and intelligent seat recommendations to improve resource utilization and create a better study experience.",
-      "problem": "University libraries often rely on manual or first-come-first-served seating, making it difficult for students to find available desks during peak hours. Seats are frequently occupied without active usage, reservations are difficult to manage, and librarians have limited control over real-time occupancy. This leads to unfair seat usage, wasted resources, and frustration for both students and library staff.",
-      "research": [
-        "Studied common challenges faced by students during peak library hours.",
-        "Identified that students spend significant time searching for available seats.",
-        "Found that many reserved seats remain unused because users fail to check in.",
-        "Observed limited visibility for librarians to monitor real-time occupancy.",
-        "Recognized the need for preference-based seat recommendations instead of manual searching.",
-        "Concluded that automating seat allocation improves fairness and resource utilization."
-      ],
-      "solution": "DeskGuard digitizes the entire library seating process through live seat availability, smart reservations, automated check-in and checkout, and real-time monitoring. Students can quickly find seats based on their preferences, while librarians and administrators gain powerful tools to manage occupancy, identify abandoned seats, and optimize library operations.",
-      "sections": [
-        {
-          "title": "Product Goals",
-          "body": [
-            "Simplify library seat discovery and reservation.",
-            "Improve utilization of available study spaces.",
-            "Reduce abandoned and unused seat reservations.",
-            "Provide real-time occupancy information.",
-            "Enable efficient library management through analytics and monitoring.",
-            "Create a fair and transparent reservation system."
-          ]
-        },
-        {
-          "title": "Design Approach",
-          "body": [
-            "Designed an interactive floor map for intuitive seat selection.",
-            "Focused on a clean interface that minimizes steps required to reserve a seat.",
-            "Created separate dashboards for students, librarians, and administrators.",
-            "Used clear visual indicators for seat availability and occupancy.",
-            "Optimized the interface for both desktop and mobile devices."
-          ]
-        },
-        {
-          "title": "Key Features",
-          "body": [
-            "Interactive library floor map with live seat availability.",
-            "Preference-based seat recommendations using filters such as charging ports, AC zones, window seats, and quiet areas.",
-            "Seat reservation with automatic hold, check-in, and checkout workflow.",
-            "Automatic release of unused reservations after timeout.",
-            "Live study session timer with away mode support.",
-            "Responsible Study Score and trust badge system.",
-            "Buddy Study feature for reserving adjacent seats for groups.",
-            "Librarian dashboard for monitoring occupancy and managing reservations.",
-            "Admin dashboard with analytics, student management, and library configuration."
-          ]
-        },
-        {
-          "title": "Core Innovation",
-          "body": [
-            "Replaces static seat allocation with an intelligent reservation system.",
-            "Combines real-time occupancy tracking with preference-based seat recommendations.",
-            "Introduces automated check-in, timeout handling, and trust scoring to ensure fair seat usage.",
-            "Provides operational insights through analytics rather than simple seat monitoring."
-          ]
-        },
-        {
-          "title": "Challenges & Decisions",
-          "body": [
-            "Designed an interactive SVG floor map that updates seat status in real time.",
-            "Implemented automatic reservation expiry to prevent seat hoarding.",
-            "Built separate workflows for students, librarians, and administrators.",
-            "Created a trust score system to encourage responsible seat usage.",
-            "Optimized the platform to handle live occupancy updates efficiently."
-          ]
-        },
-        {
-          "title": "Impact",
-          "body": [
-            "Reduces time spent searching for available study spaces.",
-            "Improves fairness in library seat allocation.",
-            "Minimizes abandoned seat reservations.",
-            "Increases utilization of available library resources.",
-            "Enables data-driven decision making for library administrators."
-          ]
-        },
-        {
-          "title": "Future Scope",
-          "body": [
-            "QR code-based seat check-in.",
-            "Indoor navigation to reserved seats.",
-            "Mobile push notifications.",
-            "AI-powered occupancy prediction.",
-            "Multi-library and multi-campus support.",
-            "Calendar integration for study planning.",
-            "Smart recommendations based on previous study patterns."
-          ]
-        }
-      ],
-      "techStack": [
-        {
-          "label": "Frontend",
-          "items": [
-            "React 18",
-            "Vite",
-            "Tailwind CSS 3",
-            "Framer Motion"
-          ]
-        },
-        {
-          "label": "Backend",
-          "items": [
-            "Node.js",
-            "Express 4",
-            "MongoDB",
-            "JWT"
-          ]
-        }
-      ],
-      "team": [
-        "Srijita Biswas"
-      ]
-    },
-  },
-  {
     title: "Savor",
     slug: "savor",
     thumbnail: "/images/savor.png",
@@ -916,40 +774,6 @@ const projects = [
         "Rumana Kar",
         "Neha Jha"
       ]
-    },
-  },
-  {
-    title: "TeamForge",
-    slug: "teamforge",
-    thumbnail: "/images/teamforge.png",
-    category: "Full-Stack · Collaboration Platform",
-    tagline: "Student innovation OS guiding idea → team → execution, with a TeamDNA compatibility system.",
-    accent: "#8B5CF6",
-    icon: "🧩",
-    startDate: new Date("2026-03-01"),
-    datePrecision: "month",
-    type: "Personal Project",
-    cardTags: ["React", "Node.js", "MongoDB", "Matching AI"],
-    filter: "Dev",
-    links: [
-      { label: "Live Demo", href: "https://team-forge-1-gws7.onrender.com/", icon: "🌐" },
-      { label: "View Code", href: "https://github.com/srijitabiswas/Team-Forge", icon: "⌥" },
-    ],
-    caseStudy: {
-      subtitle: "Student innovation OS guiding idea → team → execution, scoring team compatibility via a TeamDNA system.",
-      tags: ["React", "Vite", "Tailwind CSS", "Node.js", "MongoDB"],
-      color: "#F1ECFB",
-      overview: "TeamForge helps students turn ideas into real projects through the complete journey: IDEA → TEAM → CHEMISTRY → BUILD → EXECUTION.",
-      problem: "Students often have great ideas but struggle to find compatible teammates and stay organized through execution.",
-      solution: "IdeaForge converts plain-language ideas into required roles and a viability score, while a TeamDNA quiz scores chemistry before a team commits.",
-      sections: [
-        { title: "Smart Matching System", body: "Explainable scoring algorithms across idea generation, collaborator recommendations, and team chemistry analysis." },
-      ],
-      techStack: [
-        { label: "Frontend", items: ["React", "Vite", "Tailwind CSS"] },
-        { label: "Backend", items: ["Node.js", "Express.js", "MongoDB", "JWT"] },
-      ],
-      team: ["Srijita Biswas"],
     },
   },
   {
@@ -1425,6 +1249,241 @@ const projects = [
           "label": "Deployment",
           "items": [
             "Render"
+          ]
+        }
+      ],
+      "team": []
+    },
+  },
+  {
+    title: "Venture",
+    slug: "venture",
+    thumbnail: "",
+    category: "Frontend Development \u00b7 UI/UX Design",
+    tagline: "A cinematic frontend platform that helps students build stronger project teams through compatibility-based matching, collaborative workspaces, and gamified learning.",
+    accent: "#6366F1",
+    icon: "\U0001F9ED",
+    startDate: new Date("2026-07-01"),
+    datePrecision: "month",
+    type: "Personal Project",
+    cardTags: ["React", "GSAP", "Framer Motion", "Tailwind CSS"],
+    filter: "Dev",
+    links: [
+      { label: "Live Demo", href: "https://venture-amber.vercel.app/", icon: "\U0001F310" },
+      { label: "GitHub", href: "https://github.com/srijitabiswas/Venture---A-Journey-into-something-New.git", icon: "\U0001F310" },
+      { label: "Youtube Link", href: "https://youtu.be/UzAyciJH-7c?si=Tgvowv1S6mSzgibV", icon: "\U0001F310" },
+    ],
+    caseStudy: {
+      "subtitle": "A cinematic frontend platform that helps students build stronger project teams through compatibility-based matching, collaborative workspaces, and gamified learning.",
+      "tags": [
+        "React",
+        "Frontend",
+        "UI/UX",
+        "GSAP",
+        "Framer Motion",
+        "React Context",
+        "Vite",
+        "Tailwind CSS",
+        "Gamification",
+        "Education",
+        "Portfolio"
+      ],
+      "color": "#EEF0FD",
+      "overview": "Venture is a frontend-first web platform that helps students build stronger project teams through compatibility-based matching rather than relying only on technical skills. It guides users from creating a builder profile to finding teammates, collaborating on projects, tracking progress, and showcasing completed work in an engaging and gamified experience. The platform combines team formation, collaboration, portfolio building, and gamification into a single seamless workflow designed specifically for hackathons, academic projects, and student innovators.",
+      "problem": "Students often struggle to find reliable teammates for hackathons and collaborative projects. Teams are usually formed based on familiarity instead of compatibility, leading to poor communication, uneven workloads, and unfinished projects. Venture solves this by making team formation structured, compatibility-driven, and rewarding.",
+      "research": [
+        "Students often rely on friends instead of compatible collaborators.",
+        "Technical skills alone don't guarantee successful teamwork.",
+        "Poor communication is one of the biggest reasons student projects fail.",
+        "Students rarely have a platform to showcase collaborative growth.",
+        "Gamification increases engagement and motivates consistent participation."
+      ],
+      "solution": "Venture introduces a compatibility-driven workflow that guides users from profile creation to successful project completion. Users build their builder profile, complete the TeamDNA assessment, discover compatible teammates, collaborate through dedicated workspaces, earn Venture Credits for meaningful contributions, unlock achievements and customization rewards, and automatically build a portfolio showcasing their completed projects. By combining collaboration, productivity, and gamification, Venture creates an engaging platform where students can grow both their skills and professional portfolio.",
+      "sections": [
+        {
+          "title": "Key Features",
+          "body": [
+            "Builder Profile with skills, resume, GitHub, LinkedIn, and custom avatars",
+            "TeamDNA compatibility assessment",
+            "Project Match recommendation",
+            "Find a Team based on compatibility scores",
+            "Team Builder",
+            "Team Room collaboration",
+            "Workspace with milestone tracking",
+            "SkillCircle peer learning",
+            "Venture Credits and Builder Levels",
+            "Portfolio generation"
+          ]
+        },
+        {
+          "title": "Core Innovation",
+          "body": "Instead of matching users only by technical skills, Venture evaluates how people communicate, collaborate, and solve problems together. Combined with a gamified progression system and collaborative workspace, the platform encourages students to build stronger teams while making project development more engaging and rewarding."
+        },
+        {
+          "title": "User Journey",
+          "body": [
+            "Create Builder Profile",
+            "Complete TeamDNA Assessment",
+            "Discover Compatible Teammates",
+            "Build a Team",
+            "Collaborate in Team Room",
+            "Track Progress in Workspace",
+            "Earn Venture Credits",
+            "Publish Projects to Portfolio"
+          ]
+        },
+        {
+          "title": "Future Scope",
+          "body": [
+            "AI-generated project briefs",
+            "AI-powered Builder Identity",
+            "Living Time Capsule",
+            "Cinematic Project Finale",
+            "Venture Wrapped",
+            "Mentor matching",
+            "GitHub verification",
+            "Organization dashboard",
+            "Real-time voice, chat, and collaborative whiteboard"
+          ]
+        }
+      ],
+      "techStack": [
+        {
+          "label": "Frontend",
+          "items": [
+            "React 18",
+            "Vite",
+            "Tailwind CSS",
+            "React Router DOM"
+          ]
+        },
+        {
+          "label": "UI & Animation",
+          "items": [
+            "GSAP",
+            "Framer Motion",
+            "Lucide React"
+          ]
+        },
+        {
+          "label": "State Management",
+          "items": [
+            "React Context API"
+          ]
+        },
+        {
+          "label": "Data",
+          "items": [
+            "Structured Mock Data",
+            "JSON"
+          ]
+        },
+        {
+          "label": "Deployment",
+          "items": [
+            "Vercel"
+          ]
+        }
+      ],
+      "team": []
+    },
+  },
+  {
+    title: "Bhagavad Gita",
+    slug: "bhagavadgita",
+    thumbnail: "",
+    category: "Web Experience",
+    tagline: "Reimagining the Bhagavad Gita as an immersive digital learning experience for modern readers.",
+    accent: "#D97706",
+    icon: "\U0001F549\uFE0F",
+    startDate: new Date("2025-09-01"),
+    datePrecision: "month",
+    type: "Personal Project",
+    cardTags: ["HTML5", "CSS3", "JavaScript", "PWA"],
+    filter: "UX",
+    links: [
+      { label: "Live Demo", href: "https://bhagavad-gita-nine.vercel.app/index.html", icon: "\U0001F310" },
+      { label: "GitHub", href: "https://github.com/srijitabiswas/Bhagavad_Gita.git", icon: "\U0001F310" },
+    ],
+    caseStudy: {
+      "subtitle": "Reimagining the Bhagavad Gita as an immersive digital learning experience for modern readers.",
+      "tags": [],
+      "color": "#FCF3E7",
+      "overview": "The Bhagavad Gita is one of the world's most influential philosophical texts, yet many people find it difficult to approach because of traditional presentation formats. This project transforms the scripture into an interactive web experience that combines immersive storytelling, intuitive navigation, guided verse exploration, and modern interface design. The goal is to make the teachings more approachable while preserving their depth and authenticity.",
+      "problem": "Traditional digital versions of the Bhagavad Gita often focus on displaying text with minimal interaction, making it difficult for new readers to stay engaged or discover teachings relevant to their interests. Modern audiences expect intuitive navigation, visual storytelling, and personalized exploration rather than long blocks of static content.",
+      "research": [
+        "Many users prefer interactive learning experiences over static reading.",
+        "Breaking content into chapters and themes improves discoverability.",
+        "Visual storytelling increases engagement with educational content.",
+        "Users often seek verses related to specific emotions or life situations rather than reading sequentially.",
+        "Simple navigation encourages readers to return regularly."
+      ],
+      "solution": "I designed and developed an immersive digital platform that presents the Bhagavad Gita through interactive storytelling, guided chapter navigation, themed exploration, daily wisdom, and an intelligent verse guide. The interface focuses on readability, smooth interactions, and modern user experience while maintaining respect for the original teachings.",
+      "sections": [
+        {
+          "title": "Key Features",
+          "body": [
+            "Complete Bhagavad Gita with all 18 chapters and 701 verses",
+            "Interactive chapter reader",
+            "Story Mode introducing the Kurukshetra narrative",
+            "Daily Wisdom section",
+            "Theme-based exploration",
+            "Intelligent Gita Guide for verse discovery and concept explanations",
+            "Bookmarks and personal reflections",
+            "Responsive Progressive Web App"
+          ]
+        },
+        {
+          "title": "Core Innovation",
+          "body": [
+            "Transforms a traditional scripture into an immersive digital learning experience.",
+            "Combines storytelling, guided exploration, and modern UI/UX principles.",
+            "Makes philosophical teachings easier to navigate through themes, concepts, and contextual verse recommendations."
+          ]
+        },
+        {
+          "title": "Future Scope",
+          "body": [
+            "Voice narration for every verse",
+            "Multiple language translations",
+            "Advanced semantic search",
+            "Personalized reading journeys",
+            "User authentication",
+            "Cloud synchronization",
+            "Audio recitation",
+            "Community discussions"
+          ]
+        }
+      ],
+      "techStack": [
+        {
+          "label": "Frontend",
+          "items": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+          ]
+        },
+        {
+          "label": "Backend",
+          "items": [
+            "Node.js",
+            "Express.js"
+          ]
+        },
+        {
+          "label": "Additional",
+          "items": [
+            "Progressive Web App (PWA)",
+            "Local Storage",
+            "Responsive Design",
+            "REST API"
+          ]
+        },
+        {
+          "label": "Deployment",
+          "items": [
+            "Vercel"
           ]
         }
       ],
