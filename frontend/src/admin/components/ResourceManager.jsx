@@ -10,7 +10,7 @@ function fmtCell(val, type) {
 }
 
 function FormField({ field, value, onChange }) {
-  const v = value ?? (field.type === "array" ? [] : "");
+  const v = value ?? (field.type === "array" || field.type === "lines" ? [] : "");
 
   if (field.type === "textarea") {
     return <textarea className="adm-textarea" required={field.required} value={v} onChange={(e) => onChange(e.target.value)} />;
@@ -38,6 +38,18 @@ function FormField({ field, value, onChange }) {
       <input className="adm-input" placeholder="Comma-separated"
         value={Array.isArray(v) ? v.join(", ") : ""}
         onChange={(e) => onChange(e.target.value.split(",").map((s) => s.trim()).filter(Boolean))} />
+    );
+  }
+  if (field.type === "lines") {
+    // One full point per line becomes one bullet — unlike "array" (comma-split),
+    // this doesn't break a sentence apart at every comma inside it.
+    return (
+      <textarea
+        className="adm-textarea"
+        placeholder="One point per line"
+        value={Array.isArray(v) ? v.join("\n") : ""}
+        onChange={(e) => onChange(e.target.value.split("\n").map((s) => s.trim()).filter(Boolean))}
+      />
     );
   }
   if (field.type === "file") {
@@ -98,7 +110,7 @@ export default function ResourceManager({ config }) {
 
   const openNew = () => {
     const blank = {};
-    config.fields.forEach((f) => { blank[f.key] = f.type === "array" ? [] : f.type === "checkbox" ? true : ""; });
+    config.fields.forEach((f) => { blank[f.key] = (f.type === "array" || f.type === "lines") ? [] : f.type === "checkbox" ? true : ""; });
     setEditing(blank);
   };
 

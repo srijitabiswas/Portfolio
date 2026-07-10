@@ -12,7 +12,7 @@ export const hackathonConfig = {
     { key: "name", label: "Hackathon Name", type: "text", required: true },
     { key: "date", label: "Date", type: "text", required: true, hint: 'Free text, e.g. "Mar 2026 – Apr 2026" or "Aug 2025"' },
     { key: "badge", label: "Badge (optional)", type: "text", hint: 'e.g. "🏆 Top 150 of 1.4K+ participants"' },
-    { key: "bullets", label: "Description Points", type: "array", hint: "Comma-separated — each becomes a bullet point" },
+    { key: "bullets", label: "Description Points", type: "lines", hint: "One point per line — each becomes a bullet point (commas inside a sentence are safe)" },
     {
       key: "projectSlug", label: "Linked Project Slug (optional)", type: "text",
       hint: 'Match a project\'s slug exactly (e.g. "glowai") to show a "View Project" button on this card. Leave blank for none.',
@@ -61,7 +61,7 @@ export const experienceConfig = {
     { key: "endDate", label: "End Date", type: "date", hint: "Leave blank for \"Present\"" },
     { key: "location", label: "Location", type: "text" },
     { key: "description", label: "Description", type: "textarea" },
-    { key: "achievements", label: "Key Achievements", type: "array", hint: "Comma-separated" },
+    { key: "achievements", label: "Key Achievements", type: "lines", hint: "One point per line — each becomes a bullet point (commas inside a sentence are safe)" },
     { key: "technologies", label: "Technologies Used", type: "array", hint: "Comma-separated" },
     { key: "companyWebsite", label: "Company Website", type: "text" },
     { key: "companyLogo", label: "Company Logo", type: "file" },
